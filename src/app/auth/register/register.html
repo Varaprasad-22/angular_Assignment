@@ -1,0 +1,49 @@
+<h2>Register</h2>
+
+<form [formGroup]="registerForm" (ngSubmit)="submit()">
+
+  <div>
+    <label>Username</label><br />
+    <input
+      type="text"
+      formControlName="username"
+      placeholder="Enter username"
+    />
+  </div>
+
+  <div>
+    <label>Email</label><br />
+    <input
+      type="email"
+      formControlName="email"
+      placeholder="Enter email"
+    />
+  </div>
+
+  <div>
+    <label>Password</label><br />
+    <input
+      type="password"
+      formControlName="password"
+      placeholder="Enter password"
+    />
+  </div>
+
+  <div>
+    <label>Role</label><br />
+    <select formControlName="role">
+      <option value="user">User</option>
+      <option value="admin">Admin</option>
+    </select>
+  </div>
+
+  <button type="submit" [disabled]="registerForm.invalid">
+    Register
+  </button>
+
+</form>
+
+<p>
+  Already have an account?
+  <a routerLink="/login">Login</a>
+</p>
