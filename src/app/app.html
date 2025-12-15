@@ -1,13 +1,22 @@
 <nav class="navbar">
-  <div class="logo">
-  Airlines
+
+  <div class="nav-left">
+ Airlines
   </div>
 
-  <div class="nav-links">
-    <a routerLink="/login">Login</a>
-    <a routerLink="/register">Register</a>
+  <div class="nav-center" *ngIf="isLoggedIn">
     <a routerLink="/search-flights">Search Flights</a>
   </div>
+
+  <div class="nav-right">
+    <a *ngIf="!isLoggedIn" routerLink="/login">Login</a>
+
+    <span *ngIf="isLoggedIn">
+      Welcome, {{ username }} |
+      <a (click)="logout()">Logout</a>
+    </span>
+  </div>
+
 </nav>
 
 <div class="page-container">

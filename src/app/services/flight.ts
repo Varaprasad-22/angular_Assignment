@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({ providedIn: 'root' })
 export class FlightService {
 
-  private baseUrl = 'http://localhost:8080/api/flights';
+  private baseUrl = 'http://localhost:8212/api/flights';
 
   constructor(private http: HttpClient) {}
 

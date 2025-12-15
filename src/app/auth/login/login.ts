@@ -11,10 +11,12 @@ import { AuthService } from '../../services/auth';
   styleUrl: './login.css'
 })
 export class LoginComponent {
+
   loginForm!: FormGroup;
+
   constructor(
     private fb: FormBuilder,
-    private authService: AuthService,
+    private auth: AuthService,
     private router: Router
   ) {
     this.loginForm = this.fb.group({
@@ -22,9 +24,8 @@ export class LoginComponent {
       password: ['', Validators.required]
     });
   }
-
-  submit() {
-    this.authService.login(this.loginForm.value)
-      .subscribe(() =>{ console.log('Login Payload:', this.loginForm.value); this.router.navigate(['/search-flights'])});
+ submit() {
+    this.auth.login(this.loginForm.value)
+      .subscribe(() => this.router.navigate(['/search-flights']));
   }
 }
