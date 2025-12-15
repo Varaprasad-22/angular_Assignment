@@ -27,14 +27,24 @@ export class SearchFlightsComponent {
       tripType: ['oneWay', Validators.required]
     });
   }
- search() {
-    const payload = { ...this.searchForm.value };
+search() {
+  const payload = { ...this.searchForm.value };
 
-    if (payload.tripType === 'oneWay') {
-      delete payload.returnDate;
-    }
-
-    this.flightService.searchFlights(payload)
-      .subscribe(res => this.flights = res);
+  if (payload.tripType === 'oneWay') {
+    delete payload.returnDate;
   }
+
+  this.flightService.searchFlights(payload).subscribe({
+    next: (res: any) => {
+      console.log('FULL RESPONSE ', res);
+      console.log('OUTBOUND ', res.outboundFlights);
+
+      this.flights = res.outboundFlights || [];
+    },
+    error: (err) => {
+      console.error('ERROR ', err);
+    }
+  });
+}
+
 }

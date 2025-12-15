@@ -1,18 +1,21 @@
 .search-container {
   max-width: 900px;
-  margin: auto;
+  margin: 40px auto;
+  padding: 10px;
 }
 
 .search-container h2 {
   text-align: center;
   margin-bottom: 25px;
+  color: #003366;
 }
 
 .search-form {
-  background: white;
-  padding: 20px;
-  border-radius: 6px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  background: #ffffff;
+  padding: 22px;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  margin-bottom: 30px;
 }
 
 .row {
@@ -31,46 +34,93 @@
 
 label {
   font-size: 14px;
+  font-weight: 600;
   display: block;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
+  color: #333;
 }
 
-input, select {
+input,
+select {
   width: 100%;
-  padding: 8px;
-  border-radius: 4px;
+  padding: 9px;
+  border-radius: 6px;
   border: 1px solid #ccc;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-button {
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #003366;
+  box-shadow: 0 0 0 2px rgba(0, 51, 102, 0.15);
+}
+
+button[type="submit"] {
+  margin-top: 10px;
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   background-color: #003366;
   color: white;
+  font-size: 15px;
+  font-weight: 600;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+button[type="submit"]:hover {
+  background-color: #002244;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 button:disabled {
   background-color: #999;
   cursor: not-allowed;
+  box-shadow: none;
 }
 
 table {
   width: 100%;
-  margin-top: 30px;
   border-collapse: collapse;
   background: white;
-}
-
-th, td {
-  padding: 12px;
-  border: 1px solid #ddd;
-  text-align: center;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
 }
 
 th {
   background-color: #003366;
   color: white;
+  padding: 14px;
+  font-size: 14px;
+}
+
+td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  text-align: center;
+  font-size: 14px;
+}
+
+tr:hover td {
+  background-color: #f5f9ff;
+}
+
+.book-btn {
+  padding: 8px 14px;
+  background-color: #2e7d32;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+.book-btn:hover {
+  background-color: #1b5e20;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }

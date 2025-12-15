@@ -47,24 +47,30 @@
     </button>
 
   </form>
+<table *ngIf="flights.length > 0">
+  <tr>
+    <th>Flight No</th>
+    <th>Airline</th>
+    <th>From</th>
+    <th>To</th>
+    <th>Departure</th>
+    <th>Arrival</th>
+    <th>Price</th>
+    <th>Action</th>
+  </tr>
 
-  <table *ngIf="flights.length > 0">
-    <tr>
-      <th>Flight No</th>
-      <th>From</th>
-      <th>To</th>
-      <th>Price</th>
-    </tr>
-    <tr *ngFor="let f of flights">
-      <td>{{ f.flightNumber }}</td>
-      <td>{{ f.fromPlace }}</td>
-      <td>{{ f.toPlace }}</td>
-      <td>{{ f.price }}</td>
-    </tr>
-  </table>
-
-  <p *ngIf="flights.length === 0">
-    No flights found
-  </p>
+  <tr *ngFor="let f of flights">
+    <td>{{ f.flightNumber }}</td>
+    <td>{{ f.airlineName }}</td>
+    <td>{{ f.fromPlace }}</td>
+    <td>{{ f.toPlace }}</td>
+    <td>{{ f.depatureTime | date:'short' }}</td>
+    <td>{{ f.arrivalTime | date:'short' }}</td>
+    <td>₹{{ f.price }}</td>
+    <td>
+      <button class="book-btn">Book Now</button>
+    </td>
+  </tr>
+</table>
 
 </div>

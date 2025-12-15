@@ -23,18 +23,25 @@ export class RegisterComponent {
       username: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
-      role: ['user']  
+      role: ['user', Validators.required]  
     });
   }
+submit() {
 
-  submit() {
+  const payload = {
+    ...this.registerForm.value,
+    role: [this.registerForm.value.role]
+  };
 
-    const payload = {
-      ...this.registerForm.value,
-      role: [this.registerForm.value.role]
-    };
+  this.authService.register(payload).subscribe({
+    next: (res: any) => {
+      alert(res.message || 'User registered successfully');
+      this.router.navigate(['/login']);
+    },
+    error: (err) => {
+      alert(err.error?.message || 'Registration failed');
+    }
+  });
+}
 
-    this.authService.register(payload)
-      .subscribe(() => this.router.navigate(['/login']));
-  }
 }

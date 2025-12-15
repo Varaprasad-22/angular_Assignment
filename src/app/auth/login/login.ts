@@ -24,8 +24,16 @@ export class LoginComponent {
       password: ['', Validators.required]
     });
   }
- submit() {
-    this.auth.login(this.loginForm.value)
-      .subscribe(() => this.router.navigate(['/search-flights']));
-  }
+submit() {
+  this.auth.login(this.loginForm.value).subscribe({
+    next: (res: any) => {
+      alert(res.message || 'Login successful');
+      this.router.navigate(['/search-flights']);
+    },
+    error: (err) => {
+      alert(err.error?.message || 'Invalid username or password');
+    }
+  });
+}
+
 }
