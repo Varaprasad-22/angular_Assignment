@@ -10,7 +10,6 @@ import { AuthService } from '../../services/auth';
   templateUrl: './login.html'
 })
 export class LoginComponent {
-
   loginForm!: FormGroup;
   constructor(
     private fb: FormBuilder,

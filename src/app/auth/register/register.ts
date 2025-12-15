@@ -7,7 +7,8 @@ import { AuthService } from '../../services/auth';
   selector: 'app-register',
   standalone: true,
   imports: [ReactiveFormsModule],
-  templateUrl: './register.html'
+  templateUrl: './register.html',
+  styleUrl: './register.css'
 })
 export class RegisterComponent {
 
