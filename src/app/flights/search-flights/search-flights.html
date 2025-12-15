@@ -2,66 +2,64 @@
 
   <h2>Search Flights</h2>
 
-  <form class="search-form" [formGroup]="searchForm" (ngSubmit)="search()">
+  <form [formGroup]="searchForm" (ngSubmit)="search()" class="search-form">
 
-    <div class="search-grid">
-
-      <div>
-        <label>From</label><br />
-        <input
-          type="text"
-          formControlName="fromPlace"
-          placeholder="From place"
-        />
+    <div class="row">
+      <div class="field">
+        <label>From</label>
+        <input type="text" formControlName="fromPlace" placeholder="From city">
       </div>
 
-      <div>
-        <label>To</label><br />
-        <input
-          type="text"
-          formControlName="toPlace"
-          placeholder="To place"
-        />
+      <div class="field">
+        <label>To</label>
+        <input type="text" formControlName="toPlace" placeholder="To city">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="field">
+        <label>Departure Date</label>
+        <input type="date" formControlName="departureDate">
       </div>
 
-      <div>
-        <label>Departure Date</label><br />
+      <div class="field">
+        <label>Return Date</label>
         <input
           type="date"
-          formControlName="departureDate"
-        />
+          formControlName="returnDate"
+          [disabled]="searchForm.value.tripType === 'oneWay'"
+        >
       </div>
+    </div>
 
-      <div>
-        <label>Trip Type</label><br />
+    <div class="row">
+      <div class="field full">
+        <label>Trip Type</label>
         <select formControlName="tripType">
           <option value="oneWay">One Way</option>
           <option value="roundTrip">Round Trip</option>
         </select>
       </div>
-
-      <button type="submit" [disabled]="searchForm.invalid">
-        Search Flights
-      </button>
-
     </div>
+
+    <button type="submit" [disabled]="searchForm.invalid">
+      Search Flights
+    </button>
+
   </form>
 
-  <hr />
-
-  <table *ngIf="flights.length > 0" cellpadding="8">
+  <table *ngIf="flights.length > 0">
     <tr>
       <th>Flight No</th>
       <th>From</th>
       <th>To</th>
       <th>Price</th>
     </tr>
-
-    <tr *ngFor="let flight of flights">
-      <td>{{ flight.flightNumber }}</td>
-      <td>{{ flight.fromPlace }}</td>
-      <td>{{ flight.toPlace }}</td>
-      <td>{{ flight.price }}</td>
+    <tr *ngFor="let f of flights">
+      <td>{{ f.flightNumber }}</td>
+      <td>{{ f.fromPlace }}</td>
+      <td>{{ f.toPlace }}</td>
+      <td>{{ f.price }}</td>
     </tr>
   </table>
 

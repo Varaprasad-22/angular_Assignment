@@ -23,14 +23,18 @@ export class SearchFlightsComponent {
       fromPlace: ['', Validators.required],
       toPlace: ['', Validators.required],
       departureDate: ['', Validators.required],
+      returnDate: [''],
       tripType: ['oneWay', Validators.required]
     });
   }
  search() {
-    this.flightService.searchFlights(this.searchForm.value)
-      .subscribe(res => {
-        this.flights = res;
-        console.log('Search Payload:', this.searchForm.value);
-      });
+    const payload = { ...this.searchForm.value };
+
+    if (payload.tripType === 'oneWay') {
+      delete payload.returnDate;
+    }
+
+    this.flightService.searchFlights(payload)
+      .subscribe(res => this.flights = res);
   }
 }
