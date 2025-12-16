@@ -37,4 +37,10 @@
 
 .page-container {
   padding: 40px 20px;
+  background-image: url('https://imgs.search.brave.com/r8vTWpe8xgULhgd4xphkXfY4uql-5WW0bmyO6gfY10w/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTc0/MTI2MTg0Ni9waG90/by9sYW5kaW5nLWlu/LXN1bnNldC1odWVz/LWFpcnBsYW5lLWxh/bmRpbmctYXQtc3Vu/cmlzZS5qcGc_cz02/MTJ4NjEyJnc9MCZr/PTIwJmM9MFNkYmJn/VDFtajVYckVWRjlD/MTI3ZXpfTlhnWDhE/cFNFRUtYWGd1ME1j/QT0');
+  background-size: cover;
+  background-position: center;
+  backdrop-filter: blur(5px);
+  min-height: calc(100vh - 80px);
+  border-radius: 15px;
 }
