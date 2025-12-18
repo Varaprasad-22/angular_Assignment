@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { BookingService } from '../services/booking';
 import { CommonModule } from '@angular/common';
 
@@ -23,17 +23,27 @@ export class BookingsComponent {
       name:['',Validators.required],
       noOfSeats:[1,[Validators.required,Validators.min(1)]],
       outboundFlightId:[2],
-   passengers: this.fb.array([
-    this.fb.group({
-      name: ['vara'],
-      age: [20],
-      gender: ['Male'],
-      seatNo: ['3-B'],
-      meal: ['veg']
-    })
-  ])
+   passengers: this.fb.array([]) 
 });
 
+  }
+  get passengers(): FormArray {
+    return this.bookingForm.get('passengers') as FormArray;
+  }
+  createPassenger(): FormGroup {
+    return this.fb.group({
+      name: ['', Validators.required],
+      age: ['', Validators.required],
+      gender: ['', Validators.required],
+      seatNo: ['', Validators.required],
+      meal: ['', Validators.required]
+    });
+  }
+  addPassenger() {
+    this.passengers.push(this.createPassenger());
+  }
+  removePassenger(index: number) {
+    this.passengers.removeAt(index);
   }
   book(){
     const payload={

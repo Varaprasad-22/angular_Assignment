@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { FlightService } from '../../services/flight';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-search-flights',
@@ -29,7 +29,8 @@ export class SearchFlightsComponent {
 
   constructor(
     private fb: FormBuilder,
-    private flightService: FlightService
+    private flightService: FlightService,
+    private router:Router
   ) {
     this.searchForm = this.fb.group({
       fromPlace: ['', Validators.required],
@@ -73,6 +74,13 @@ search() {
     },
     error: (err) => {
       console.error('ERROR ', err);
+    }
+  });
+}
+selectFlight(flight: any) {
+  this.router.navigate(['/bookings'], {
+    state: {
+      outboundFlightId: flight.id   
     }
   });
 }

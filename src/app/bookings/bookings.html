@@ -14,6 +14,35 @@
             <label>No Of Seates</label>
             <input type="number" min="1" max="10" formControlName="noOfSeats" placeholder="No Of Seats"/>
         </div>
+          <div formArrayName="passengers">
+
+    <div *ngFor="let p of passengers.controls; let i = index"
+         [formGroupName]="i">
+
+      <input formControlName="name" placeholder="Passenger Name" />
+      <input type="number" formControlName="age" placeholder="Age" min="1" />
+
+      <select formControlName="gender">
+        <option value="">Gender</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+      </select>
+
+      <input formControlName="seatNo" placeholder="Seat No" />
+
+      <select formControlName="meal">
+        <option value="">Meal</option>
+        <option value="veg">Veg</option>
+        <option value="nonVeg">Non-Veg</option>
+      </select>
+
+      <button type="button" (click)="removePassenger(i)">Remove</button>
+
+    </div>
+
+  </div>
+
+  <button type="button" (click)="addPassenger()">Add Passenger</button>
         <button type="submit" [disabled]="bookingForm.invalid">Book Now</button>
     </form>
 </div>
