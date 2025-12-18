@@ -9,7 +9,7 @@ export class BookingService {
   constructor(private http:HttpClient) { }
 
   bookingFlights(data:any){
-    return this.http.post<any[]>(`${this.baseUrl}/booking`,data, { responseType: 'text' }  );
+    return this.http.post(`${this.baseUrl}/booking`,data, { responseType: 'text' }  );
     
   }
 }

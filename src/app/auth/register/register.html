@@ -46,7 +46,12 @@
         <option value="admin">Admin</option>
       </select>
     </div>
-
+<p class="success" *ngIf="successMessage">
+    {{ successMessage }}
+  </p>
+<p class="error" *ngIf="errorMessage">
+    {{ errorMessage }}
+  </p>
     <button type="submit" [disabled]="registerForm.invalid">
       Register
     </button>

@@ -64,9 +64,11 @@ export class BookingsComponent {
       next:(response:any)=>{
         console.log(response);
         this.pnrNumber=response;
+        alert(response)
       },
       error:(err)=>{
         console.log(err);
+          alert(err)
       }
     })
   }

@@ -15,6 +15,9 @@ export class RegisterComponent {
 
   registerForm!: FormGroup;
 
+  successMessage = '';
+  errorMessage = '';
+
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
@@ -28,7 +31,8 @@ export class RegisterComponent {
     });
   }
 submit() {
-
+this.successMessage = '';
+    this.errorMessage = '';
   const payload = {
     ...this.registerForm.value,
     role: [this.registerForm.value.role]
@@ -37,11 +41,24 @@ submit() {
   this.authService.register(payload).subscribe({
     next: (res: any) => {
       alert(res.message || 'User registered successfully');
-      this.router.navigate(['/login']);
+        // this.successMessage = res.message || 'User registered successfully';
+
+        // //  delay before navigation
+        // setTimeout(() => {
+        //   this.router.navigate(['/login']);
+        // }, 1500);
+      // this.router.navigate(['/login']);
     },
     error: (err) => {
+    //      if (typeof err.error === 'string') {
+    //     this.errorMessage = err.error;
+    //   } else {
+    //     this.errorMessage = err.error?.message || 'Registration failed';
+    //   }
+    // }
+          // this.errorMessage = err.error?.message || 'Registration failed';
       alert(err.error?.message || 'Registration failed');
-    }
+}
   });
 }
 
