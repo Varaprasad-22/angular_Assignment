@@ -28,7 +28,6 @@
           type="date"
           [min]="searchForm.get('departureDate')?.value||today"
           formControlName="returnDate"
-          [disabled]="searchForm.value.tripType === 'oneWay'"
         >
       </div>
     </div>
