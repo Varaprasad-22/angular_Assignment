@@ -11,6 +11,16 @@ import { FlightService } from '../../services/flight';
   styleUrl: './search-flights.css'
 })
 export class SearchFlightsComponent {
+  places: string[] = [
+  'Delhi',
+  'Mumbai',
+  'Bangalore',
+  'Chennai',
+  'Hyderabad',
+  'Kolkata',
+  'Pune',
+  'Ahmedabad'
+];
 
   searchForm!: FormGroup;
   today!:String;
