@@ -67,14 +67,14 @@
     <th>Action</th>
   </tr>
 
-  <tr *ngFor="let f of flights">
-    <td>{{ f.flightNumber }}</td>
-    <td>{{ f.airlineName }}</td>
-    <td>{{ f.fromPlace }}</td>
-    <td>{{ f.toPlace }}</td>
-    <td>{{ f.depatureTime | date:'short' }}</td>
-    <td>{{ f.arrivalTime | date:'short' }}</td>
-    <td>₹{{ f.price }}</td>
+  <tr *ngFor="let flight of flights">
+    <td>{{ flight.flightNumber }}</td>
+    <td>{{ flight.airlineName }}</td>
+    <td>{{ flight.fromPlace }}</td>
+    <td>{{ flight.toPlace }}</td>
+    <td>{{ flight.depatureTime | date:'short' }}</td>
+    <td>{{ flight.arrivalTime | date:'short' }}</td>
+    <td>₹{{ flight.price }}</td>
     <td>
       <button class="book-btn" routerLink="/bookings">Book Now</button>
     </td>

@@ -22,15 +22,18 @@ export class BookingsComponent {
       emailId:['',Validators.required],
       name:['',Validators.required],
       noOfSeats:[1,[Validators.required,Validators.min(1)]],
-      outboundFlightId:[1],
-      passengers:[{
-        name:"vara",
-        age:10,
-        gender:"male",
-        meal:"veg",
-        seatNo:"12A"
-      }]
+      outboundFlightId:[2],
+   passengers: this.fb.array([
+    this.fb.group({
+      name: ['vara'],
+      age: [20],
+      gender: ['Male'],
+      seatNo: ['3-B'],
+      meal: ['veg']
     })
+  ])
+});
+
   }
   book(){
     const payload={
