@@ -68,7 +68,7 @@
   </tr>
 
   <tr *ngFor="let flight of flights">
-    <td>{{ flight.flightNumber }}</td>
+    <td>{{ flight.flightId }}</td>
     <td>{{ flight.airlineName }}</td>
     <td>{{ flight.fromPlace }}</td>
     <td>{{ flight.toPlace }}</td>
@@ -76,7 +76,9 @@
     <td>{{ flight.arrivalTime | date:'short' }}</td>
     <td>₹{{ flight.price }}</td>
     <td>
-      <button class="book-btn" routerLink="/bookings">Book Now</button>
+     <button type="button" class="book-btn" (click)="selectFlight(flight)">
+      Book Now
+    </button>
     </td>
   </tr>
 

@@ -80,7 +80,7 @@ search() {
 selectFlight(flight: any) {
   this.router.navigate(['/bookings'], {
     state: {
-      outboundFlightId: flight.id   
+      outboundFlightId: flight.flightId   
     }
   });
 }

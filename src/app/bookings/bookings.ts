@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { BookingService } from '../services/booking';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-bookings',
@@ -14,15 +15,25 @@ export class BookingsComponent {
 
   bookingForm!:FormGroup
   pnrNumber!:String;
+    outboundFlightId!: number;
   constructor(
     private fb:FormBuilder,
-    private bookingService:BookingService
+    private bookingService:BookingService,
+    private router:Router
   ){
+  
+    // READ flightId from router state
+    const navigation = this.router.getCurrentNavigation();
+    this.outboundFlightId =
+      navigation?.extras?.state?.['outboundFlightId'];
+  if (!this.outboundFlightId) {
+  this.router.navigate(['/search-flights']);
+}
     this.bookingForm=this.fb.group({
       emailId:['',Validators.required],
       name:['',Validators.required],
       noOfSeats:[1,[Validators.required,Validators.min(1)]],
-      outboundFlightId:[2],
+      outboundFlightId:[this.outboundFlightId,Validators.required],
    passengers: this.fb.array([]) 
 });
 
