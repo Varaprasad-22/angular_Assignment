@@ -16,7 +16,11 @@
 
       <div class="field">
         <label>To</label>
-        <input type="text" formControlName="toPlace" placeholder="To city">
+        <select formControlName="toPlace">
+          <option value="">Select To Place</option>
+          <option *ngFor="let toPlace of places" [value]="toPlace" [disabled]="searchForm.get('fromPlace')?.value===toPlace">{{toPlace}}</option>
+        </select>
+        <!-- <input type="text" formControlName="toPlace" placeholder="To city"> -->
       </div>
     </div>
 
@@ -72,7 +76,7 @@
     <td>{{ f.arrivalTime | date:'short' }}</td>
     <td>₹{{ f.price }}</td>
     <td>
-      <button class="book-btn">Book Now</button>
+      <button class="book-btn" routerLink="/bookings">Book Now</button>
     </td>
   </tr>
 
