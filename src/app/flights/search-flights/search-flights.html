@@ -19,13 +19,14 @@
     <div class="row">
       <div class="field">
         <label>Departure Date</label>
-        <input type="date" formControlName="departureDate">
+        <input type="date" formControlName="departureDate" [min]="today">
       </div>
 
       <div class="field">
         <label>Return Date</label>
         <input
           type="date"
+          [min]="searchForm.get('departureDate')?.value||today"
           formControlName="returnDate"
           [disabled]="searchForm.value.tripType === 'oneWay'"
         >
@@ -47,7 +48,7 @@
     </button>
 
   </form>
-<table *ngIf="flights.length > 0">
+<table *ngIf="flights.length > 0;else noFlights">
   <tr>
     <th>Flight No</th>
     <th>Airline</th>
@@ -71,6 +72,11 @@
       <button class="book-btn">Book Now</button>
     </td>
   </tr>
-</table>
 
+</table>
+  <ng-template #noFlights>
+  <div class="no-flights">
+    No flights found
+  </div>
+</ng-template>
 </div>

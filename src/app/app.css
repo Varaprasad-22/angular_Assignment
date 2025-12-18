@@ -44,3 +44,15 @@
   min-height: calc(100vh - 80px);
   border-radius: 15px;
 }
+.logout {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.login {
+  text-decoration: underline;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 5px 10px;
+  background-color: #ffffff33;
+  border: 1px solid white;
+}

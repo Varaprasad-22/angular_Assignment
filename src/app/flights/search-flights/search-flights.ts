@@ -13,6 +13,7 @@ import { FlightService } from '../../services/flight';
 export class SearchFlightsComponent {
 
   searchForm!: FormGroup;
+  today!:String;
   flights: any[] = [];
 
   constructor(
@@ -26,6 +27,8 @@ export class SearchFlightsComponent {
       returnDate: [''],
       tripType: ['oneWay', Validators.required]
     });
+    const now=new Date();
+    this.today=now.toISOString().split('T')[0];
   }
 search() {
   const payload = { ...this.searchForm.value };

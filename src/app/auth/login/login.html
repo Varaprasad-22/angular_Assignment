@@ -2,6 +2,9 @@
 <h2>Login</h2>
 
 <form [formGroup]="loginForm" (ngSubmit)="submit()">
+ <div class="error-box" *ngIf="errorMessage">
+    {{ errorMessage }}
+  </div>
 
   <div>
     <label>Username</label><br />
@@ -20,10 +23,10 @@
       placeholder="Enter password"
     />
   </div>
-<span *ngIf="loginForm.get('password')?.errors?.['minlength']">
+<span   style="color: red;" *ngIf="loginForm.get('password')?.errors?.['minlength']">
   Password must be at least 6 characters
 </span>
-<span *ngIf="loginForm.get('username')?.errors?.['minlength']">
+<span   style="color: red;" *ngIf="loginForm.get('username')?.errors?.['minlength']">
   Username must be at least 3 characters
 </span>
   <button type="submit" [disabled]="loginForm.invalid">
@@ -31,7 +34,13 @@
   </button>
 
 </form>
+<!-- <p *ngIf="successMessage" class="success-msg">
+  {{ successMessage }}
+</p>
 
+<p *ngIf="errorMessage" class="error-msg">
+  {{ errorMessage }}
+</p> -->
 <p>
   New user?
   <a routerLink="/register">Register</a>

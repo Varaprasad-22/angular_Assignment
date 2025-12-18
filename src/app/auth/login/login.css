@@ -2,6 +2,7 @@
   width: 360px;
   margin: 60px auto;
   background: white;
+    /* backdrop-filter: blur(10px); */
   padding: 25px;
   border-radius: 6px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
@@ -47,4 +48,12 @@
 .login-card p {
   text-align: center;
   margin-top: 15px;
+}
+.error-box {
+  background: #ffe5e5;
+  color: #b00020;
+  padding: 8px 12px;
+  margin-bottom: 12px;
+  border-radius: 4px;
+  font-size: 14px;
 }

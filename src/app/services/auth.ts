@@ -27,7 +27,7 @@ export class AuthService {
         localStorage.setItem('token', res.token);
         localStorage.setItem('username', data.username);
 
-        // 🔥 UPDATE STATE
+        //  UPDATE STATE
         this.loggedInSubject.next(true);
         this.usernameSubject.next(data.username);
       })
@@ -39,7 +39,7 @@ register(data: any) {
   logout() {
     localStorage.clear();
 
-    // 🔥 UPDATE STATE
+    // UPDATE STATE
     this.loggedInSubject.next(false);
     this.usernameSubject.next('');
   }

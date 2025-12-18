@@ -15,6 +15,8 @@ export class LoginComponent {
 
   loginForm!: FormGroup;
 
+  successMessage = '';
+  errorMessage = '';
   constructor(
     private fb: FormBuilder,
     private auth: AuthService,
@@ -26,13 +28,19 @@ export class LoginComponent {
 });
   }
 submit() {
+  this.successMessage = '';
+    this.errorMessage = '';
   this.auth.login(this.loginForm.value).subscribe({
     next: (res: any) => {
+       this.successMessage = res.message || 'Login successful';
       alert(res.message || 'Login successful');
-      this.router.navigate(['/search-flights']);
+     setTimeout(() => {
+          this.router.navigate(['/search-flights']);
+        }, 800);
     },
     error: (err) => {
-      alert(err.error?.message || 'Invalid username or password');
+      // alert(err.error?.message || 'Invalid username or password');
+      this.errorMessage = err.error?.message || 'Invalid username or password';
     }
   });
 }
