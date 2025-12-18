@@ -21,7 +21,7 @@ export class BookingsComponent {
     this.bookingForm=this.fb.group({
       emailId:['',Validators.required],
       name:['',Validators.required],
-      noOfSeats:[1,Validators.required],
+      noOfSeats:[1,[Validators.required,Validators.min(1)]],
       outboundFlightId:[1],
       passengers:[{
         name:"vara",

@@ -1,7 +1,19 @@
 <p>bookings works!</p>
 <div class="bookings">
     <h2>Booking Details</h2>
-    <form [formGroup]="bookingForm" (ngSubmit)="book()" className="booking">
-
+    <form [formGroup]="bookingForm" (ngSubmit)="book()" class="booking">
+        <div class="name-section">
+            <label>Name</label>
+            <input formControlName="name" placeholder="Enter Bookers Name"/>
+        </div>
+        <div class="email">
+            <label>Email</label>
+            <input type="email" formControlName="emailId" placeholder="Email"/>
+        </div>
+        <div class="seats">
+            <label>No Of Seates</label>
+            <input type="number" min="1" max="10" formControlName="noOfSeats" placeholder="No Of Seats"/>
+        </div>
+        <button type="submit" [disabled]="bookingForm.invalid">Book Now</button>
     </form>
 </div>
