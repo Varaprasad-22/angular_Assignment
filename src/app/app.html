@@ -11,10 +11,12 @@
   <div class="nav-right">
     <a *ngIf="!isLoggedIn" routerLink="/login" class="login">Login</a>
 
+    <a *ngIf="isLoggedIn" routerLink="/bookingHistory">History</a>
     <span *ngIf="isLoggedIn">
       Welcome, {{ username }} |
       <a (click)="logout()" class="logout">Logout</a>
     </span>
+
   </div>
 
 </nav>

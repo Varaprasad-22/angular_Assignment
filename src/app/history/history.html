@@ -1,0 +1,35 @@
+<p>history works!</p>
+
+<div *ngFor="let booking of bookings" class="history-card">
+
+   <span><b>PNR:</b> {{ booking.pnr }}</span>
+   <b>Flight ID:</b> {{ booking.flightId }}
+<div class="info">
+    <p><b>Name:</b> {{ booking.name }}</p>
+    <p><b>Email:</b> {{ booking.email }}</p>
+    <p><b>Status:</b>{{booking.status}}</p>
+  </div>
+  <div class="passengers">
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>SeatNo</th>
+                <th>Meal Type</th>
+                <th>Gender</th>
+                <th>Age</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let passengers of booking.passengersList">
+                <th>{{passengers.name}}</th>
+                <th>{{passengers.seatNo}}</th>
+                <th>{{passengers.meal}}</th>
+                <th>{{passengers.gender}}</th>
+                <th>{{passengers.age}}</th>
+            </tr>
+        </tbody>
+    </table>
+  </div>
+   
+</div>
