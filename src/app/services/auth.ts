@@ -26,6 +26,7 @@ export class AuthService {
       tap(res => {
         localStorage.setItem('token', res.token);
         localStorage.setItem('username', data.username);
+        localStorage.setItem('email',data.email)
 
         //  UPDATE STATE
         this.loggedInSubject.next(true);

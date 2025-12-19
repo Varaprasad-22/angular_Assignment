@@ -22,12 +22,18 @@
       <input formControlName="name" placeholder="Passenger Name" />
       <input type="number" formControlName="age" placeholder="Age" min="1" />
 
-      <select formControlName="gender">
-        <option value="">Gender</option>
-        <option value="Male">Male</option>
-        <option value="Female">Female</option>
-      </select>
+    <div>
+      <label>Gender</label>
+  <label>
+    <input type="radio" formControlName="gender" value="Male">
+    Male
+  </label>
 
+  <label>
+    <input type="radio" formControlName="gender" value="Female">
+    Female
+  </label>
+</div>
       <input formControlName="seatNo" placeholder="Seat No" />
 
       <select formControlName="meal">
@@ -35,14 +41,14 @@
         <option value="veg">Veg</option>
         <option value="nonVeg">Non-Veg</option>
       </select>
-
-      <button type="button" (click)="removePassenger(i)">Remove</button>
+<!-- 
+      <button type="button" (click)="removePassenger(i)">Remove</button> -->
 
     </div>
 
   </div>
 
-  <button type="button" (click)="addPassenger()">Add Passenger</button>
+  <!-- <button type="button" (click)="addPassenger()">Add Passenger</button> -->
         <button type="submit" [disabled]="bookingForm.invalid">Book Now</button>
     </form>
 </div>

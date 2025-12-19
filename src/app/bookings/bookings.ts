@@ -36,7 +36,10 @@ export class BookingsComponent {
       outboundFlightId:[this.outboundFlightId,Validators.required],
    passengers: this.fb.array([]) 
 });
-
+ this.bookingForm.get('noOfSeats')?.valueChanges.subscribe(seats => {
+    this.syncPassengers(seats);
+  });
+    this.syncPassengers(1);
   }
   get passengers(): FormArray {
     return this.bookingForm.get('passengers') as FormArray;
@@ -50,12 +53,19 @@ export class BookingsComponent {
       meal: ['', Validators.required]
     });
   }
-  addPassenger() {
-    this.passengers.push(this.createPassenger());
+  syncPassengers(seatCount: number) {
+  const currentCount = this.passengers.length;
+
+  if (seatCount > currentCount) {
+    for (let i = currentCount; i < seatCount; i++) {
+      this.passengers.push(this.createPassenger());
+    }
+  } else if (seatCount < currentCount) {
+    for (let i = currentCount; i > seatCount; i--) {
+      this.passengers.removeAt(i - 1);
+    }
   }
-  removePassenger(index: number) {
-    this.passengers.removeAt(index);
-  }
+}
   book(){
     const payload={
       ...this.bookingForm.value
