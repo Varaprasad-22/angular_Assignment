@@ -14,5 +14,9 @@ export class HistoryService{
     return this.http.get<any[]>(`${this.baseUrl}/booking/history/${email}`
     );
   }
- 
+  cancelTicet(pnr:String){
+    return this.http.delete(
+      `${this.baseUrl}/booking/cancel/${pnr}`
+    )
+  }
 }

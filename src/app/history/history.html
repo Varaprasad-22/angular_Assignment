@@ -31,5 +31,14 @@
         </tbody>
     </table>
   </div>
-   
+    <button class="cancel-btn" (click)="cancelTicket(booking.pnr)">
+    Cancel Ticket
+  </button>
+  <p *ngIf="cancelSuccess" class="success">
+  {{ cancelSuccess }}
+</p>
+
+<p *ngIf="cancelerror" class="error">
+  {{ cancelerror }}
+</p>
 </div>

@@ -10,7 +10,9 @@ import { CommonModule } from '@angular/common';
   styleUrl: './history.css',
 })
 export class History {
-bookings:any[]=[]
+bookings:any[]=[];
+  cancelSuccess:string="";
+  cancelerror:string="";
   constructor(
     private history:HistoryService,
     private router:Router
@@ -30,5 +32,19 @@ bookings:any[]=[]
       }
     });
   }
-
+  cancelTicket(pnr:String){
+if(!confirm('Are you Sure u wanted to cancel')){
+return ;
+}
+this.history.cancelTicet(pnr).subscribe({
+  next:(response:any)=>{
+    this.cancelSuccess=(response?.message||response);
+    console.log(response)
+  },
+  error:(err)=>{
+    this.cancelerror= err?.error?.message || 'Cancel failed';
+    console.log(err)
+  }
+})
+  }
 }
