@@ -16,6 +16,7 @@ export class BookingsComponent {
   bookingForm!:FormGroup
   pnrNumber!:String;
     outboundFlightId!: number;
+    emailId!: string | null;
   constructor(
     private fb:FormBuilder,
     private bookingService:BookingService,
@@ -30,7 +31,7 @@ export class BookingsComponent {
   this.router.navigate(['/search-flights']);
 }
     this.bookingForm=this.fb.group({
-      emailId:['',Validators.required],
+      emailId:localStorage.getItem('email'),
       name:['',Validators.required],
       noOfSeats:[1,[Validators.required,Validators.min(1)]],
       outboundFlightId:[this.outboundFlightId,Validators.required],

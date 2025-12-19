@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet, RouterLink } from '@angular/router';
+import { RouterOutlet, RouterLink, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AuthService } from './services/auth';
 
@@ -14,14 +14,22 @@ export class AppComponent {
 
   isLoggedIn = false;
   username = '';
-
-  constructor(private auth: AuthService) {
+  showLogoutConfirm = false;
+  constructor(private auth: AuthService, private router: Router) {
     this.auth.isLoggedIn$.subscribe(val => this.isLoggedIn = val);
     this.auth.username$.subscribe(name => this.username = name);
   }
+ logout() {
+    this.showLogoutConfirm = true;
+  }
 
-  logout() {
+  confirmLogout() {
+    this.showLogoutConfirm = false;
     this.auth.logout();
-    location.href = '/login';
+    this.router.navigate(['/login']);
+  }
+
+  cancelLogout() {
+    this.showLogoutConfirm = false;
   }
 }

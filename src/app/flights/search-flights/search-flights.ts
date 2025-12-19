@@ -73,7 +73,8 @@ search() {
       this.flights = res.outboundFlights || [];
     },
     error: (err) => {
-      console.error('ERROR ', err);
+      console.error('ERROR ', err.message);
+      alert(err.message)
     }
   });
 }

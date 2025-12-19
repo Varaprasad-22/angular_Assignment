@@ -18,6 +18,12 @@
   </div>
 
 </nav>
+<div *ngIf="showLogoutConfirm" class="logout-confirm">
+  <p>Do you want to logout?</p>
+  <button (click)="confirmLogout()">Yes</button>
+  <button (click)="cancelLogout()">No</button>
+</div>
+
 
 <div class="page-container">
   <router-outlet></router-outlet>
