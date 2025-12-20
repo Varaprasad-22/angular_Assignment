@@ -31,7 +31,18 @@
         </tbody>
     </table>
   </div>
-    <button class="cancel-btn" (click)="cancelTicket(booking.pnr)">
+  <div class='dailogDrop' *ngIf=showDialog>
+
+    <div class='dailog'>
+      <h2>Cancel Ticket</h2>
+      <p>Are You Really Wanted To Cancel?</p>
+      <div class='cancelOptions'>
+        <button (click)="cancelTicket()">Yes</button>
+        <button (click)="dailogClose()">No</button>
+      </div>
+    </div>
+  </div>
+    <button class="cancel-btn" (click)="dailogOpen(booking.pnr)">
     Cancel Ticket
   </button>
   <p *ngIf="cancelSuccess" class="success">

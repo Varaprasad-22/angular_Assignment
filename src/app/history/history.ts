@@ -13,6 +13,9 @@ export class History {
 bookings:any[]=[];
   cancelSuccess:string="";
   cancelerror:string="";
+  showDialog = false;
+  selectedPnr: string | null = null;
+
   constructor(
     private history:HistoryService,
     private router:Router
@@ -32,19 +35,31 @@ bookings:any[]=[];
       }
     });
   }
-  cancelTicket(pnr:String){
-if(!confirm('Are you Sure u wanted to cancel')){
+
+  dailogOpen(pnr:string){
+    this.showDialog=true;
+    this.selectedPnr=pnr;
+  }
+  dailogClose(){
+    this.showDialog=false;
+    this.selectedPnr=null;
+  }
+  cancelTicket(){
+if(!this.selectedPnr){
 return ;
 }
-this.history.cancelTicet(pnr).subscribe({
+this.history.cancelTicet(this.selectedPnr).subscribe({
   next:(response:any)=>{
     this.cancelSuccess=(response?.message||response);
     console.log(response)
+        this.showDialog=false;
   },
   error:(err)=>{
     this.cancelerror= err?.error?.message || 'Cancel failed';
     console.log(err)
+        this.showDialog=false;
   }
+  
 })
   }
 }
