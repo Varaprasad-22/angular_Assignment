@@ -42,7 +42,7 @@
       </div>
     </div>
   </div>
-    <button class="cancel-btn" (click)="dailogOpen(booking.pnr)">
+    <button class="cancel-btn" [disabled]="booking.status===false" (click)="dailogOpen(booking.pnr)">
     Cancel Ticket
   </button>
   <p *ngIf="cancelSuccess" class="success">
