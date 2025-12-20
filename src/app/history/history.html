@@ -30,6 +30,13 @@
             </tr>
         </tbody>
     </table>
+     <p *ngIf="booking.cancelSuccess" class="success">
+  {{booking.cancelSuccess }}
+</p>      
+
+<p *ngIf="booking.cancelError" class="error">
+  {{ booking.cancelError }}
+</p>
   </div>
   <div class='dailogDrop' *ngIf=showDialog>
 
@@ -45,11 +52,5 @@
     <button class="cancel-btn" [disabled]="booking.status===false" (click)="dailogOpen(booking.pnr)">
     Cancel Ticket
   </button>
-  <p *ngIf="cancelSuccess" class="success">
-  {{ cancelSuccess }}
-</p>
-
-<p *ngIf="cancelerror" class="error">
-  {{ cancelerror }}
-</p>
+ 
 </div>

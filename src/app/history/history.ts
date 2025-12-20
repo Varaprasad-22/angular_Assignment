@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,ChangeDetectorRef } from '@angular/core';
 import { HistoryService } from '../services/history';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -11,15 +11,15 @@ import { CommonModule } from '@angular/common';
 })
 export class History {
 bookings:any[]=[];
-  cancelSuccess:string="";
-  cancelerror:string="";
+  // cancelSuccess:string="";
+  // cancelerror:string="";
   showDialog = false;
   selectedPnr: string | null = null;
 
   constructor(
     private history:HistoryService,
-    private router:Router
-
+    private router:Router,
+private cdr:ChangeDetectorRef
   ){
     const email=localStorage.getItem('email')
     if(!email){
@@ -28,7 +28,14 @@ bookings:any[]=[];
     }
     this.history.getHistoryByMail().subscribe({
       next:(response)=>{
-        this.bookings=response;
+        this.bookings=response.map((a:any)=>({
+          ...a,
+          cancelSuccess:'',
+          cancelError:''
+        })).sort(
+          (a:any,b:any)=>Number(b.status)-Number(a.status)
+        );
+        this.cdr.detectChanges();
       },
       error:(err)=>{
         console.error(err)
@@ -50,14 +57,22 @@ return ;
 }
 this.history.cancelTicet(this.selectedPnr).subscribe({
   next:(response:any)=>{
-    this.cancelSuccess=(response?.message||response);
+    const booking = this.bookings.find(b => b.pnr === this.selectedPnr);
+    booking.cancelSuccess=(response?.message||response);
+    // this.cancelSuccess=(response?.message||response);
+    booking.status = false;
     console.log(response)
         this.showDialog=false;
+        this.cdr.detectChanges();
   },
   error:(err)=>{
-    this.cancelerror= err?.error?.message || 'Cancel failed';
+    // this.cancelerror= err?.error?.message || 'Cancel failed';
+    const booking = this.bookings.find(b => b.pnr === this.selectedPnr);
+    booking.cancelError = err?.error?.message || 'Cancel failed';
+
     console.log(err)
         this.showDialog=false;
+                this.cdr.detectChanges();
   }
   
 })
