@@ -72,9 +72,7 @@ search() {
       console.log('OUTBOUND ', response.outboundFlights);
 
       this.flights = response.outboundFlights || [];
-      if(this.flights=[]){
-        this.flights=[];
-      }
+    
     this.cbr.detectChanges();
     },
     error: (err) => {
