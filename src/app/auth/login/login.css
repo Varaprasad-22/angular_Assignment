@@ -49,11 +49,19 @@
   text-align: center;
   margin-top: 15px;
 }
-.error-box {
+.error-msg{
   background: #ffe5e5;
   color: #b00020;
   padding: 8px 12px;
   margin-bottom: 12px;
   border-radius: 4px;
   font-size: 14px;
+}
+.success-msg{
+  padding: 8px 12px;
+  margin-bottom: 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  color:#003366;
+ background: #8be0d2ff;
 }

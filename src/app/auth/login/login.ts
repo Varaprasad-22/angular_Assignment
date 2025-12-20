@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,ChangeDetectorRef } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth';
@@ -20,7 +20,8 @@ export class LoginComponent {
   constructor(
     private fb: FormBuilder,
     private auth: AuthService,
-    private router: Router
+    private router: Router,
+    private cdr: ChangeDetectorRef
   ) {
     this.loginForm = this.fb.group({
   username: ['', [Validators.required, Validators.minLength(3)]],
@@ -33,14 +34,14 @@ submit() {
   this.auth.login(this.loginForm.value).subscribe({
     next: (res: any) => {
        this.successMessage = res.message || 'Login successful';
-      alert(res.message || 'Login successful');
-     setTimeout(() => {
-          this.router.navigate(['/search-flights']);
-        }, 800);
+       this.cdr.detectChanges();
+      // alert(res.message || 'Login successful');
+      this.router.navigate(['/search-flights'])
     },
     error: (err) => {
       // alert(err.error?.message || 'Invalid username or password');
       this.errorMessage = err.error?.message || 'Invalid username or password';
+       this.cdr.detectChanges();
     }
   });
 }

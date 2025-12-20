@@ -2,9 +2,7 @@
 <h2>Login</h2>
 
 <form [formGroup]="loginForm" (ngSubmit)="submit()">
- <div class="error-box" *ngIf="errorMessage">
-    {{ errorMessage }}
-  </div>
+
 
   <div>
     <label>Username</label><br />
@@ -34,13 +32,13 @@
   </button>
 
 </form>
-<!-- <p *ngIf="successMessage" class="success-msg">
+<p *ngIf="successMessage" class="success-msg">
   {{ successMessage }}
 </p>
 
 <p *ngIf="errorMessage" class="error-msg">
   {{ errorMessage }}
-</p> -->
+</p>
 <p>
   New user?
   <a routerLink="/register">Register</a>
