@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component ,ChangeDetectorRef} from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth';
@@ -21,7 +21,8 @@ export class RegisterComponent {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private cbr:ChangeDetectorRef
   ) {
     this.registerForm = this.fb.group({
       username: ['', [Validators.required, Validators.minLength(3)]],
@@ -40,24 +41,26 @@ this.successMessage = '';
 
   this.authService.register(payload).subscribe({
     next: (res: any) => {
-      alert(res.message || 'User registered successfully');
-        // this.successMessage = res.message || 'User registered successfully';
+      // alert(res.message || 'User registered successfully');
+        this.successMessage = res.message || 'User registered successfully';
 
         // //  delay before navigation
         // setTimeout(() => {
         //   this.router.navigate(['/login']);
         // }, 1500);
-      // this.router.navigate(['/login']);
+        this.cbr.detectChanges();
+      this.router.navigate(['/login']);
     },
     error: (err) => {
-    //      if (typeof err.error === 'string') {
-    //     this.errorMessage = err.error;
-    //   } else {
-    //     this.errorMessage = err.error?.message || 'Registration failed';
-    //   }
+         if (typeof err.error === 'string') {
+        this.errorMessage = err.error;
+      } else {
+        this.errorMessage = err.error?.message || 'Registration failed';
+      }
     // }
-          // this.errorMessage = err.error?.message || 'Registration failed';
-      alert(err.error?.message || 'Registration failed');
+          // this.errorMessage = err.message || 'Registration failed';
+      this.cbr.detectChanges();
+          // alert(err.error?.message || 'Registration failed');
 }
   });
 }
