@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,ChangeDetectorRef } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { FlightService } from '../../services/flight';
@@ -26,11 +26,12 @@ export class SearchFlightsComponent {
   searchForm!: FormGroup;
   today!:String;
   flights: any[] = [];
-
+errorMessage!:String
   constructor(
     private fb: FormBuilder,
     private flightService: FlightService,
-    private router:Router
+    private router:Router,
+    private cbr:ChangeDetectorRef
   ) {
     this.searchForm = this.fb.group({
       fromPlace: ['', Validators.required],
@@ -66,15 +67,21 @@ search() {
   }
 
   this.flightService.searchFlights(payload).subscribe({
-    next: (res: any) => {
-      console.log('FULL RESPONSE ', res);
-      console.log('OUTBOUND ', res.outboundFlights);
+    next: (response: any) => {
+      console.log('FULL RESPONSE ', response);
+      console.log('OUTBOUND ', response.outboundFlights);
 
-      this.flights = res.outboundFlights || [];
+      this.flights = response.outboundFlights || [];
+      if(this.flights=[]){
+        this.flights=[];
+      }
+    this.cbr.detectChanges();
     },
     error: (err) => {
-      console.error('ERROR ', err.message);
-      alert(err.message)
+      // console.error('ERROR ', err.error.message);
+      // alert(err.message)
+      this.errorMessage=err.error.message;
+        this.cbr.detectChanges();
     }
   });
 }

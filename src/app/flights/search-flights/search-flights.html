@@ -55,7 +55,7 @@
     </button>
 
   </form>
-<table *ngIf="flights.length > 0;else noFlights">
+<table *ngIf=flights.length>0>
   <tr>
     <th>Flight No</th>
     <th>Airline</th>
@@ -83,9 +83,10 @@
   </tr>
 
 </table>
-  <ng-template #noFlights>
+  <ng-template #noFlights *ngIf=flights.length=0>
   <div class="no-flights">
     No flights found
   </div>
 </ng-template>
+<p class="error" *ngIf="errorMessage">{{errorMessage}}</p>
 </div>

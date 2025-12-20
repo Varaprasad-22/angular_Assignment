@@ -135,3 +135,11 @@ tr:hover td {
   font-weight: 600;
   color: #003366;
 }
+.error{
+  background: #ffe5e5;
+  color: #b00020;
+  padding :8px 16px;
+  margin-bottom:12px;
+  border-radius: 4px;
+  font-size: 14px;
+}
