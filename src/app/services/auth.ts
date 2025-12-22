@@ -59,6 +59,6 @@ register(data: any) {
   }
 
   isAdmin():boolean{
-    return localStorage.getItem('role')==='admin';
+    return localStorage.getItem('role')==='ADMIN';
   }
 }

@@ -20,7 +20,8 @@ export class SearchFlightsComponent {
   'Hyderabad',
   'Kolkata',
   'Pune',
-  'Ahmedabad'
+  'Ahmedabad',
+  'Kurnool'
 ];
 
   searchForm!: FormGroup;
