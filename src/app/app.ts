@@ -14,9 +14,11 @@ export class AppComponent {
 
   isLoggedIn = false;
   username = '';
+  role='';
   showLogoutConfirm = false;
   constructor(private auth: AuthService, private router: Router) {
     this.auth.isLoggedIn$.subscribe(val => this.isLoggedIn = val);
+    this.auth.role$.subscribe(val=>this.role=val);
     this.auth.username$.subscribe(name => this.username = name);
   }
  logout() {
@@ -31,5 +33,8 @@ export class AppComponent {
 
   cancelLogout() {
     this.showLogoutConfirm = false;
+  }
+  isAdmin(): boolean {
+    return this.role === 'admin';
   }
 }
