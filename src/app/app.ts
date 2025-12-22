@@ -44,10 +44,13 @@ openLogoutConfirm() {
   this.showLogoutConfirm = true;
 }
 
-confirmLogout() {
-  this.showLogoutConfirm = false;
-  this.logout(); 
-}
+ confirmLogout() {
+    this.showLogoutConfirm = false;
+
+    this.auth.logout();
+    this.router.navigate(['/login']);
+  }
+
 
 cancelLogout() {
   this.showLogoutConfirm = false;
