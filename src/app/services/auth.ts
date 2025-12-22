@@ -64,12 +64,12 @@ register(data: any) {
   changePassword(data: any) {
   return this.http.post(
    `${this.baseUrl}/change-password`,
-    data,
-    {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('token')}`
-      }
-    }
+    data
+    // {
+    //   headers: {
+    //     Authorization: `Bearer ${localStorage.getItem('token')}`
+    //   }
+    // }
   );
 }
 }
