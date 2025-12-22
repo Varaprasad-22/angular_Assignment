@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-// import { AuthService } from '../../services/auth';
+import { AuthService } from '.././services/auth';
 
 @Component({
   selector: 'app-changepasword',
@@ -22,7 +22,7 @@ export class Changepasword {
 
   constructor(
     private fb: FormBuilder,
-    // private authService: AuthService,
+    private authService: AuthService,
     private router: Router
   ) {
     this.changePasswordForm = this.fb.group({
@@ -54,14 +54,14 @@ export class Changepasword {
       newPassword: this.changePasswordForm.value.confirmPassword
     };
 
-    // this.authService.changePassword(payload).subscribe({
-    //   next: (response: any) => {
-    //     this.successMessage = response.message || 'Password changed successfully';
-    //     this.changePasswordForm.reset();
-    //   },
-    //   error: (err:any) => {
-    //     this.errorMessage = err.error?.message || 'Failed to change password';
-    //   }
-    // });
+    this.authService.changePassword(payload).subscribe({
+      next: (response: any) => {
+        this.successMessage = response.message || 'Password changed successfully';
+        this.changePasswordForm.reset();
+      },
+      error: (err:any) => {
+        this.errorMessage = err.error?.message || 'Failed to change password';
+      }
+    });
   }
 }

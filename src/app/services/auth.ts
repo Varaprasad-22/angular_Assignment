@@ -61,4 +61,15 @@ register(data: any) {
   isAdmin():boolean{
     return localStorage.getItem('role')==='ADMIN';
   }
+  changePassword(data: any) {
+  return this.http.post(
+   `${this.baseUrl}/change-password`,
+    data,
+    {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    }
+  );
+}
 }
