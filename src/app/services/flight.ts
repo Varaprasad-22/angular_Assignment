@@ -11,4 +11,8 @@ export class FlightService {
   searchFlights(data: any) {
     return this.http.post<any[]>(`${this.baseUrl}/search`, data);
   }
+
+  addFlight(data:any){
+    return  this.http.post(`${this.baseUrl}/airline/inventory`,data);
+  }
 }
