@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component,ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FlightService } from '../services/flight';
 import { AuthService } from '../services/auth';
@@ -19,7 +19,8 @@ export class AddFlight {
     private fb:FormBuilder,
     private flightService:FlightService,
     private auth:AuthService,
-    private router:Router 
+    private router:Router ,    
+    private cdr: ChangeDetectorRef
   ){
     if(!this.auth.isAdmin()){
       this.router.navigate(['/login']);
@@ -39,6 +40,8 @@ export class AddFlight {
 }
 
   addFlight(){
+    this.errorMessage='';
+    this.successMessage=''
     if(this.addFlightForm.invalid){
       this.addFlightForm.markAllAsTouched();
       return;
@@ -46,10 +49,12 @@ export class AddFlight {
     this.flightService.addFlight(this.addFlightForm.value).subscribe({
       next:(response:any)=>{
         this.addFlightForm.reset();
-        this.successMessage=response||"added Flight";
+        this.successMessage=response+"added Flight";
+               this.cdr.detectChanges();
       },
       error:(err:any)=>{
-        this.errorMessage=err.error||"failed to Add Fligt";
+        this.errorMessage=err.error.message||"failed to Add Fligt";
+               this.cdr.detectChanges();
       }
     })
   }

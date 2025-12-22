@@ -39,21 +39,21 @@
       />
     </div>
 
-   <div class="form-group">
+    <div class="form-group">
   <label>Role</label>
 
-  <div class="radio-group">
-    <label class="radio-option">
-      <input
-        type="radio"
-        formControlName="role"
-        value="user"
-        checked
-      />
-      User
-    </label>
-  </div>
+  <label class="radio-inline">
+    <input
+      type="radio"
+      formControlName="role"
+      value="user"
+    />
+    <div>
+    User</div>
+  </label>
 </div>
+
+
 <p class="success" *ngIf="successMessage">
     {{ successMessage }}
   </p>
