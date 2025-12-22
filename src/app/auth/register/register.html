@@ -38,6 +38,30 @@
         placeholder="Enter password"
       />
     </div>
+<div class="password-rules"
+  *ngIf="registerForm.get('password')?.touched">
+
+  <p [class.valid]="registerForm.get('password')?.value?.length >= 8">
+    • Minimum 8 characters
+  </p>
+
+  <p [class.valid]="hasUppercase(registerForm.get('password')?.value)">
+    • At least one uppercase letter
+  </p>
+
+  <p [class.valid]="hasLowercase(registerForm.get('password')?.value)">
+    • At least one lowercase letter
+  </p>
+
+  <p [class.valid]="hasNumber(registerForm.get('password')?.value)">
+    • At least one number
+  </p>
+
+  <p [class.valid]="hasSpecialChar(registerForm.get('password')?.value)">
+    • At least one special character (@$!%*?&)
+  </p>
+
+</div>
 
     <div class="form-group">
   <label>Role</label>

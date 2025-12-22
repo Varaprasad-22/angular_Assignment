@@ -4,6 +4,7 @@ import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth';
 import { CommonModule } from '@angular/common';
 
+
 @Component({
   selector: 'app-register',
   standalone: true,
@@ -17,7 +18,8 @@ export class RegisterComponent {
 
   successMessage = '';
   errorMessage = '';
-
+  passwordRegex =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
@@ -27,10 +29,26 @@ export class RegisterComponent {
     this.registerForm = this.fb.group({
       username: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
+      password: ['', [Validators.required,Validators.pattern(this.passwordRegex)]],
       role: ['user', Validators.required]  
     });
   }
+  hasUppercase(value: string): boolean {
+  return /[A-Z]/.test(value);
+}
+
+hasLowercase(value: string): boolean {
+  return /[a-z]/.test(value);
+}
+
+hasNumber(value: string): boolean {
+  return /\d/.test(value);
+}
+
+hasSpecialChar(value: string): boolean {
+  return /[@$!%*?&]/.test(value);
+}
+
 submit() {
 this.successMessage = '';
     this.errorMessage = '';
