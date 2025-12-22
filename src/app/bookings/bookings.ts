@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component ,ChangeDetectorRef} from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { BookingService } from '../services/booking';
 import { CommonModule } from '@angular/common';
@@ -17,10 +17,13 @@ export class BookingsComponent {
   pnrNumber!:String;
     outboundFlightId!: number;
     emailId!: string | null;
+    successMessage="";
+    errorMessage='';
   constructor(
     private fb:FormBuilder,
     private bookingService:BookingService,
-    private router:Router
+    private router:Router,
+    private cdr:ChangeDetectorRef
   ){
   
     // READ flightId from router state
@@ -75,11 +78,16 @@ export class BookingsComponent {
       next:(response:any)=>{
         console.log(response);
         this.pnrNumber=response;
-        alert(response)
+        this.successMessage=response.message;
+        // alert(response)
+        this.cdr.detectChanges();
       },
       error:(err)=>{
         console.log(err);
-          alert(err)
+        this.errorMessage=err.error;
+        
+        this.cdr.detectChanges();
+          // alert(err)
       }
     })
   }

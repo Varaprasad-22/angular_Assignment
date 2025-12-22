@@ -52,4 +52,6 @@
   <!-- <button type="button" (click)="addPassenger()">Add Passenger</button> -->
         <button type="submit" [disabled]="bookingForm.invalid">Book Now</button>
     </form>
+    <p *ngIf="successMessage" class="success">{{successMessage}}</p>
+    <p *ngIf="errorMessage" class="error">{{errorMessage}}</p>
 </div>

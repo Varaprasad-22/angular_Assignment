@@ -16,9 +16,12 @@ export class AuthService {
     localStorage.getItem('username') || ''
   );
 
+  private roleSubject=new BehaviorSubject<string>(
+    localStorage.getItem('role')||''
+  );
   isLoggedIn$ = this.loggedInSubject.asObservable();
   username$ = this.usernameSubject.asObservable();
-
+  role$=this.roleSubject.asObservable();
   constructor(private http: HttpClient) {}
 
   login(data: any) {
@@ -26,11 +29,12 @@ export class AuthService {
       tap(res => {
         localStorage.setItem('token', res.token);
         localStorage.setItem('username', data.username);
-        localStorage.setItem('email',res.email)
-
+        localStorage.setItem('email',res.email);
+        localStorage.setItem('role',res.role);
         //  UPDATE STATE
         this.loggedInSubject.next(true);
         this.usernameSubject.next(data.username);
+        this.roleSubject.next(res.role);
       })
     );
   }
@@ -43,6 +47,7 @@ register(data: any) {
     // UPDATE STATE
     this.loggedInSubject.next(false);
     this.usernameSubject.next('');
+    this.roleSubject.next('');
   }
 
   isLoggedIn(): boolean {
@@ -51,5 +56,9 @@ register(data: any) {
 
   getUsername(): string {
     return this.usernameSubject.value;
+  }
+
+  isAdmin():boolean{
+    return localStorage.getItem('role')==='admin';
   }
 }

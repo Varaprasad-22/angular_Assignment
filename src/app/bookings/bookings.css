@@ -88,3 +88,19 @@ button:disabled {
   border-color: #999;
   cursor: not-allowed;
 }
+.success{
+ padding: 8px 12px;
+  margin-bottom: 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  color:#003366;
+ background: #8be0d2ff;
+}
+.error{
+    background: #ffe5e5;
+  color: #b00020;
+  padding: 8px 12px;
+  margin-bottom: 12px;
+  border-radius: 4px;
+  font-size: 14px;
+}
