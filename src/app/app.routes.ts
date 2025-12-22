@@ -6,6 +6,7 @@ import { SearchFlightsComponent } from './flights/search-flights/search-flights'
 import { BookingsComponent } from './bookings/bookings';
 import { History } from './history/history';
 import { AddFlight } from './add-flight/add-flight';
+import { Changepasword } from './changepasword/changepasword';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -14,6 +15,7 @@ export const routes: Routes = [
   { path: 'search-flights', component: SearchFlightsComponent },
   { path: 'bookings', component: BookingsComponent },
   {path:'bookingHistory',component:History},
-  {path:"addFlight",component:AddFlight}
+  {path:"addFlight",component:AddFlight},
+  {path:"changePassword",component:Changepasword}
 ];
 

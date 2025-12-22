@@ -13,10 +13,21 @@
     <a *ngIf="!isLoggedIn" routerLink="/login" class="login">Login</a>
 
     <a *ngIf="isLoggedIn" routerLink="/bookingHistory">History</a>
-    <span *ngIf="isLoggedIn">
-      Welcome, {{ username }} |
-      <a (click)="logout()" class="logout">Logout</a>
-    </span>
+   <div class="profile-wrapper" *ngIf="isLoggedIn">
+  <div class="profile-btn" (click)="toggleProfileMenu()">
+    {{ username }}
+  </div>
+
+  <div class="profile-menu" *ngIf="showProfileMenu">
+    <a routerLink="/changePassword" (click)="closeProfileMenu()">
+      Change Password
+    </a>
+    <a (click)="openLogoutConfirm()">
+      Logout
+    </a>
+  </div>
+</div>
+
 
   </div>
 

@@ -25,16 +25,32 @@ export class AppComponent {
     this.showLogoutConfirm = true;
   }
 
-  confirmLogout() {
-    this.showLogoutConfirm = false;
-    this.auth.logout();
-    this.router.navigate(['/login']);
-  }
-
-  cancelLogout() {
-    this.showLogoutConfirm = false;
-  }
+ 
   isAdmin(): boolean {
     return this.role === 'admin';
   }
+  showProfileMenu = false;
+
+toggleProfileMenu() {
+  this.showProfileMenu = !this.showProfileMenu;
+}
+
+closeProfileMenu() {
+  this.showProfileMenu = false;
+}
+
+openLogoutConfirm() {
+  this.showProfileMenu = false;
+  this.showLogoutConfirm = true;
+}
+
+confirmLogout() {
+  this.showLogoutConfirm = false;
+  this.logout(); 
+}
+
+cancelLogout() {
+  this.showLogoutConfirm = false;
+}
+
 }

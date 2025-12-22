@@ -83,3 +83,16 @@ padding: 8px 12px;
   margin: 0;
   accent-color: #003366;
 }
+.password-rules {
+  font-size: 13px;
+  margin-top: 6px;
+}
+
+.password-rules p {
+  margin: 4px 0;
+  color: #b00020;
+}
+
+.password-rules p.valid {
+  color: green;
+}

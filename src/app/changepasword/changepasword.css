@@ -1,0 +1,71 @@
+.change-password-card {
+  width: 380px;
+  margin: 60px auto;
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 14px;
+}
+
+label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #003366;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #999;
+}
+
+.password-rules {
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.password-rules p {
+  margin: 3px 0;
+  color: #b00020;
+}
+
+.password-rules p.valid {
+  color: green;
+}
+
+.success {
+  color: green;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.error {
+  color: #b00020;
+  text-align: center;
+  margin-top: 10px;
+}

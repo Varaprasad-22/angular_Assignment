@@ -1,0 +1,67 @@
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
+// import { AuthService } from '../../services/auth';
+
+@Component({
+  selector: 'app-changepasword',
+  standalone: true,
+  imports: [ReactiveFormsModule, CommonModule],
+  templateUrl: './changepasword.html',
+  styleUrl: './changepasword.css',
+})
+export class Changepasword {
+
+  changePasswordForm!: FormGroup;
+  successMessage = '';
+  errorMessage = '';
+
+  passwordRegex =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+  constructor(
+    private fb: FormBuilder,
+    // private authService: AuthService,
+    private router: Router
+  ) {
+    this.changePasswordForm = this.fb.group({
+      oldPassword: ['', Validators.required],
+      newPassword: ['', [
+        Validators.required,
+        Validators.pattern(this.passwordRegex)
+      ]],
+      confirmPassword: ['', Validators.required]
+    }, { validators: this.passwordMatchValidator });
+  }
+
+  passwordMatchValidator(form: FormGroup) {
+    return form.get('newPassword')?.value ===
+           form.get('confirmPassword')?.value
+      ? null : { passwordMismatch: true };
+  }
+
+  submit() {
+    this.successMessage = '';
+    this.errorMessage = '';
+
+    if (this.changePasswordForm.invalid) {
+      this.changePasswordForm.markAllAsTouched();
+      return;
+    }
+    const payload = {
+      oldPassword: this.changePasswordForm.value.oldPassword,
+      newPassword: this.changePasswordForm.value.confirmPassword
+    };
+
+    // this.authService.changePassword(payload).subscribe({
+    //   next: (response: any) => {
+    //     this.successMessage = response.message || 'Password changed successfully';
+    //     this.changePasswordForm.reset();
+    //   },
+    //   error: (err:any) => {
+    //     this.errorMessage = err.error?.message || 'Failed to change password';
+    //   }
+    // });
+  }
+}
