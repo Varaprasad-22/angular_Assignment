@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FlightService } from '../services/flight';
 import { AuthService } from '../services/auth';
 import { Router } from '@angular/router';
@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 export class AddFlight {
   successMessage='';
   errorMessage="";
-
+  addFlightForm!:FormGroup
   constructor(
     private fb:FormBuilder,
     private flightService:FlightService,
@@ -24,9 +24,9 @@ export class AddFlight {
     if(!this.auth.isAdmin()){
       this.router.navigate(['/login']);
     }
-  }
+  
 
-  addFlightForm=this.fb.group({
+  this.addFlightForm=this.fb.group({
     airlineName:['',Validators.required],
     flightNumber:['',Validators.required],
     fromPlace:['',Validators.required],
@@ -36,6 +36,7 @@ export class AddFlight {
     totalSeats:[null,[Validators.min(1),Validators.required]],
     price:[null,[Validators.required,Validators.min(0)]]
   })
+}
 
   addFlight(){
     if(this.addFlightForm.invalid){

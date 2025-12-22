@@ -1,1 +1,66 @@
-<p>add-flight works!</p>
+<div class="add-flight-container">
+  <h2>Add Flight</h2>
+
+  <form [formGroup]="addFlightForm" (ngSubmit)="addFlight()">
+
+    <div class="form-group">
+      <label>Airline Name</label>
+      <input type="text" formControlName="airlineName" />
+      <small *ngIf="addFlightForm.get('airlineName')?.touched && addFlightForm.get('airlineName')?.invalid">
+        Airline name is required
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label>Flight Number</label>
+      <input type="text" formControlName="flightNumber" />
+      <small *ngIf="addFlightForm.get('flightNumber')?.touched && addFlightForm.get('flightNumber')?.invalid">
+        Flight number is required
+      </small>
+    </div>
+
+    <div class="row">
+      <div class="form-group">
+        <label>From</label>
+        <input type="text" formControlName="fromPlace" />
+      </div>
+
+      <div class="form-group">
+        <label>To</label>
+        <input type="text" formControlName="toPlace" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group">
+        <label>Departure Time</label>
+        <input type="datetime-local" formControlName="depatureTime" />
+      </div>
+
+      <div class="form-group">
+        <label>Arrival Time</label>
+        <input type="datetime-local" formControlName="arrivalTime" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group">
+        <label>Total Seats</label>
+        <input type="number" formControlName="totalSeats" />
+      </div>
+
+      <div class="form-group">
+        <label>Price</label>
+        <input type="number" formControlName="price" />
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="addFlightForm.invalid">
+      Add Flight
+    </button>
+
+    <p class="success" *ngIf="successMessage">{{ successMessage }}</p>
+    <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+  </form>
+</div>
