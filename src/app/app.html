@@ -5,6 +5,7 @@
   </div>
 
   <div class="nav-center" *ngIf="isLoggedIn">
+    <a routerLink="/getAllFlights">All Flights | </a>
     <a routerLink="/search-flights">Search Flights  </a>
     <a routerLink="/addFlight" *ngIf="isAdmin()">| Add Flight</a>
   </div>

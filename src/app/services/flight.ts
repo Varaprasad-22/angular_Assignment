@@ -15,4 +15,7 @@ export class FlightService {
   addFlight(data:any){
     return  this.http.post(`${this.baseUrl}/airline/inventory`,data);
   }
+  getAllFlights(){
+    return this.http.get<any[]>(`${this.baseUrl}/getAll`);
+  }
 }
