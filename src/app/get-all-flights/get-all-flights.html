@@ -1,1 +1,34 @@
-<p>get-all-flights works!</p>
+<div class="flight-Container">
+    <h2>All Flights</h2>
+    <table *ngIf="flights.length>0">
+        <thead>
+            <tr>
+                  <th>ID</th>
+        <th>Airline</th>
+        <th>Flight No</th>
+        <th>From</th>
+        <th>To</th>
+        <th>Departure</th>
+        <th>Arrival</th>
+        <th>Seats</th>
+        <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let flight of flights">
+                        <td>{{ flight.flightId }}</td>
+        <td>{{ flight.airlineName }}</td>
+        <td>{{ flight.flightNumber }}</td>
+        <td>{{ flight.fromPlace }}</td>
+        <td>{{ flight.toPlace }}</td>
+        <td>{{ flight.depatureTime | date:'short' }}</td>
+        <td>{{ flight.arrivalTime | date:'short' }}</td>
+        <td>{{ flight.totalSeats }}</td>
+        <td>₹{{ flight.price }}</td>
+            </tr>
+        </tbody>
+    </table>
+     <p class="no-data" *ngIf="flights.length === 0">
+    No flights available
+  </p>
+</div>
