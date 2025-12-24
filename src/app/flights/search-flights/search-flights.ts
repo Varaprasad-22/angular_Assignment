@@ -61,6 +61,8 @@ errorMessage!:String
     });
   }
 search() {
+  this.flights=[]
+  this.errorMessage=''
   const payload = { ...this.searchForm.value };
 
   if (payload.tripType === 'oneWay') {

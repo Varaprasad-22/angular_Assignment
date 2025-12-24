@@ -12,6 +12,17 @@ import { Router } from '@angular/router';
   styleUrl: './add-flight.css',
 })
 export class AddFlight {
+  places: string[] = [
+  'Delhi',
+  'Mumbai',
+  'Bangalore',
+  'Chennai',
+  'Hyderabad',
+  'Kolkata',
+  'Pune',
+  'Ahmedabad',
+  'Kurnool'
+];
   successMessage='';
   errorMessage="";
   addFlightForm!:FormGroup

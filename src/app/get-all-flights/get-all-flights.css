@@ -40,6 +40,21 @@ tbody tr:hover {
   color: #666;
 }
 
+.book-btn {
+  padding: 6px 12px;
+  background-color: #2e7d32;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.book-btn:hover {
+  background-color: #1b5e20;
+   cursor: pointer;
+}
+
 @media (max-width: 900px) {
   table {
     font-size: 13px;

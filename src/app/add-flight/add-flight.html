@@ -22,12 +22,20 @@
     <div class="row">
       <div class="form-group">
         <label>From</label>
-        <input type="text" formControlName="fromPlace" />
+        <!-- <input type="text" formControlName="fromPlace" /> -->
+          <select formControlName="fromPlace">
+          <option value="">Select From Place</option>
+          <option *ngFor="let a of places" [value]="a">{{a}}</option>
+        </select>
       </div>
 
       <div class="form-group">
         <label>To</label>
-        <input type="text" formControlName="toPlace" />
+        <!-- <input type="text" formControlName="toPlace" /> -->
+      <select formControlName="toPlace">
+          <option value="">Select To Place</option>
+          <option *ngFor="let toPlace of places" [value]="toPlace" [disabled]="addFlightForm.get('fromPlace')?.value===toPlace">{{toPlace}}</option>
+        </select>
       </div>
     </div>
 

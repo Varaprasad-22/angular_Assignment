@@ -26,6 +26,14 @@
   margin-bottom: 6px;
   color: #333;
 }
+.form-group select{
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
 
 .form-group input {
   padding: 10px 12px;

@@ -1,6 +1,7 @@
 import { Component,ChangeDetectorRef } from '@angular/core';
 import { FlightService } from '../services/flight';
 import { CommonModule } from '@angular/common';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-get-all-flights',
@@ -13,7 +14,8 @@ export class GetAllFlights {
   flights:any[]=[];
   errorMessage='';
   constructor(private flightService:FlightService,
-    private cdr:ChangeDetectorRef
+    private cdr:ChangeDetectorRef,
+    private router:Router
   ){
 this.getAllFlights();
   }
@@ -30,4 +32,12 @@ this.getAllFlights();
     })
   };
 
+  bookingPass(flights:any){
+    this.router.navigate(['/bookings'], {
+    state: {
+      outboundFlightId: flights.flightId   
+    }})
+
+
+  }
 }
