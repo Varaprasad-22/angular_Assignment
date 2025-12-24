@@ -42,6 +42,11 @@ submit() {
       // alert(err.error?.message || 'Invalid username or password');
       this.errorMessage = err.error?.message || 'Invalid username or password';
        this.cdr.detectChanges();
+       if (
+        err.status === 403 &&
+        err.error?.message === 'PASSWORD_EXPIRED'
+      ) {
+        this.router.navigate(['/expiredPassword'])}
     }
   });
 }

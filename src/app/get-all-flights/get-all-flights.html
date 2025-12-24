@@ -12,6 +12,7 @@
         <th>Arrival</th>
         <th>Seats</th>
         <th>Price</th>
+        <th>Book Now</th>
             </tr>
         </thead>
         <tbody>
@@ -25,6 +26,7 @@
         <td>{{ flight.arrivalTime | date:'short' }}</td>
         <td>{{ flight.totalSeats }}</td>
         <td>₹{{ flight.price }}</td>
+        <td><button class="book-btn">Book Now</button></td>
             </tr>
         </tbody>
     </table>
