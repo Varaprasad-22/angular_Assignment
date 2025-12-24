@@ -16,7 +16,7 @@ export class HistoryService{
   }
   cancelTicet(pnr:String){
     return this.http.delete(
-      `${this.baseUrl}/booking/cancel/${pnr}`
+      `${this.baseUrl}/booking/cancel/${pnr}`,    { responseType: 'text' }
     )
   }
 }

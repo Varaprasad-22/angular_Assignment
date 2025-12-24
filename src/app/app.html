@@ -12,7 +12,7 @@
   <div class="nav-right">
     <a *ngIf="!isLoggedIn" routerLink="/login" class="login">Login</a>
 
-    <a *ngIf="isLoggedIn && !isAdmin()" routerLink="/bookingHistory">History</a>
+    <a *ngIf="isLoggedIn " routerLink="/bookingHistory">History</a>
    <div class="profile-wrapper" *ngIf="isLoggedIn">
   <div class="profile-btn" (click)="toggleProfileMenu()">
     {{ username }}
@@ -36,8 +36,8 @@
 <div *ngIf="showLogoutConfirm" class="logout-confirm">
   <div class="logout-effects">
   <p>Do you want to logout?</p>
-  <button (click)="confirmLogout()">Yes</button>
-  <button (click)="cancelLogout()">No</button>
+  <button class="yes-button" (click)="confirmLogout()">Yes</button>
+  <button  class="no-button" (click)="cancelLogout()">No</button>
   </div>
 </div>
 

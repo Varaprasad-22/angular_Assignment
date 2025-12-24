@@ -80,10 +80,34 @@
   text-align: center;
 }
 
-.logout-confirm button {
+.logout-confirm .yes-button {
+    background-color: #d32f2f;
+     color: white;
+     padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
   margin: 0 10px;
-  padding: 6px 14px;
-}.profile-wrapper {
+}
+.logout-confirm .no-button{
+   background-color: #e0e0e0;
+     padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  margin: 0 10px;
+}
+
+.logout-confirm .yes-button:hover {
+    background-color: #b71c1c;
+}
+
+.logout-confirm .no-button:hover{
+    background-color: #cfcfcf;
+}
+.profile-wrapper {
   position: relative;
 }
 

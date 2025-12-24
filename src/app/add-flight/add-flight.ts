@@ -62,7 +62,7 @@ arrivalAfterDepartureValidator(form: FormGroup) {
     this.flightService.addFlight(this.addFlightForm.value).subscribe({
       next:(response:any)=>{
         this.addFlightForm.reset();
-        this.successMessage=response+"added Flight";
+        this.successMessage="Flight No "+ response+" added SuccesFully";
                this.cdr.detectChanges();
       },
       error:(err:any)=>{

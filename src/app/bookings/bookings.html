@@ -14,11 +14,11 @@
             <label>No Of Seates</label>
             <input type="number" min="1" max="10" formControlName="noOfSeats" placeholder="No Of Seats"/>
         </div>
-          <div formArrayName="passengers">
+          <div formArrayName="passengers" class="list_passengers">
 
     <div *ngFor="let p of passengers.controls; let i = index"
-         [formGroupName]="i">
-
+         [formGroupName]="i" class="passengers_card">
+<p>Add details of Passenger - {{i+1}}</p><br>
       <input formControlName="name" placeholder="Passenger Name" />
       <input type="number" formControlName="age" placeholder="Age" min="1" />
 
