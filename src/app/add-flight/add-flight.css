@@ -1,73 +1,107 @@
 .add-flight-container {
-  max-width: 500px;
+  max-width: 800px;
   margin: 40px auto;
-  background: white;
-  padding: 25px;
-  border-radius: 6px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  padding: 30px 35px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
 }
 
-h2 {
+.add-flight-container h2 {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
+  color: #003366;
+  letter-spacing: 0.5px;
 }
 
 .form-group {
-  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
 }
 
-label {
-  display: block;
+.form-group label {
   font-size: 14px;
-  margin-bottom: 4px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #333;
 }
 
-input {
-  width: 100%;
-  padding: 8px;
-  border-radius: 4px;
+.form-group input {
+  padding: 10px 12px;
+  border-radius: 6px;
   border: 1px solid #ccc;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group input:focus {
+  border-color: #003366;
+  box-shadow: 0 0 0 2px rgba(0, 51, 102, 0.2);
+}
+
+.form-group small {
+  margin-top: 5px;
+  font-size: 12px;
+  color: #d32f2f;
 }
 
 .row {
-  display: flex;
-  gap: 12px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
 }
 
-small {
-  color: red;
-  font-size: 12px;
-}
-
-button {
+button[type="submit"] {
   width: 100%;
-  padding: 10px;
+  margin-top: 20px;
+  padding: 12px;
   background-color: #003366;
   color: white;
+  font-size: 15px;
+  font-weight: bold;
   border: none;
-  border-radius: 4px;
-  margin-top: 10px;
+  border-radius: 8px;
   cursor: pointer;
+  transition: background 0.3s, transform 0.1s;
 }
 
-button:disabled {
-  background-color: #999;
+button[type="submit"]:hover:not(:disabled) {
+  background-color: #002244;
+}
+
+button[type="submit"]:disabled {
+  background-color: #9bb0c7;
+  cursor: not-allowed;
 }
 
 .success {
- padding: 8px 12px;
-  margin-bottom: 12px;
-  border-radius: 4px;
+  margin-top: 16px;
+  padding: 10px;
+  border-radius: 6px;
+  background: #e6f4ea;
+  color: #2e7d32;
   font-size: 14px;
-  color:#003366;
- background: #8be0d2ff;
+  text-align: center;
 }
 
 .error {
-  background: #ffe5e5;
-  color: #b00020;
-  padding: 8px 12px;
-  margin-bottom: 12px;
-  border-radius: 4px;
+  margin-top: 16px;
+  padding: 10px;
+  border-radius: 6px;
+  background: #fdecea;
+  color: #c62828;
   font-size: 14px;
+  text-align: center;
+}
+ small {
+  margin-top: 5px;
+  font-size: 12px;
+  color: #d32f2f;
+}
+@media (max-width: 768px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
 }

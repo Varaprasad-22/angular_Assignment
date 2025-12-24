@@ -5,14 +5,14 @@
   </div>
 
   <div class="nav-center" *ngIf="isLoggedIn">
-    <a routerLink="/search-flights">Search Flights | </a>
-    <a routerLink="/addFlight" *ngIf="isAdmin">Add Flight</a>
+    <a routerLink="/search-flights">Search Flights  </a>
+    <a routerLink="/addFlight" *ngIf="isAdmin()">| Add Flight</a>
   </div>
 
   <div class="nav-right">
     <a *ngIf="!isLoggedIn" routerLink="/login" class="login">Login</a>
 
-    <a *ngIf="isLoggedIn" routerLink="/bookingHistory">History</a>
+    <a *ngIf="isLoggedIn && !isAdmin()" routerLink="/bookingHistory">History</a>
    <div class="profile-wrapper" *ngIf="isLoggedIn">
   <div class="profile-btn" (click)="toggleProfileMenu()">
     {{ username }}
@@ -32,10 +32,13 @@
   </div>
 
 </nav>
+
 <div *ngIf="showLogoutConfirm" class="logout-confirm">
+  <div class="logout-effects">
   <p>Do you want to logout?</p>
   <button (click)="confirmLogout()">Yes</button>
   <button (click)="cancelLogout()">No</button>
+  </div>
 </div>
 
 

@@ -78,7 +78,7 @@ export class BookingsComponent {
       next:(response:any)=>{
         console.log(response);
         this.pnrNumber=response;
-        this.successMessage=response.message;
+        this.successMessage=response;
         // alert(response)
         this.cdr.detectChanges();
       },

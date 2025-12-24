@@ -1,98 +1,155 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
 .register-card {
-  width: 380px;
-  margin: 60px auto;
-  background: white;
-  padding: 25px;
-  border-radius: 6px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  background: #ffffff;
+  width: 420px;
+  padding: 30px 35px;
   border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
 .register-card h2 {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
+  color: #333;
 }
 
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 16px;
 }
 
-.register-card label {
-  font-size: 14px;
-  color: #333;
+.form-group label {
   display: block;
-  margin-bottom: 4px;
+  font-size: 14px;
+  margin-bottom: 6px;
+  color: #444;
+  font-weight: 600;
 }
 
-.register-card input,
-.register-card select {
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"] {
   width: 100%;
-  padding: 8px;
-  border-radius: 4px;
+  padding: 10px 12px;
+  border-radius: 6px;
   border: 1px solid #ccc;
-}
-
-.register-card button {
-  width: 100%;
-  padding: 10px;
-  background-color: #003366;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.register-card button:disabled {
-  background-color: #999;
-}
-
-.register-card p {
-  text-align: center;
-  margin-top: 15px;
-}
-.error{
-  background: #ffe5e5;
-  color: #b00020;
-  padding :8px 16px;
-  margin-bottom:12px;
-  border-radius: 4px;
+  outline: none;
   font-size: 14px;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
-.success{
-padding: 8px 12px;
-  margin-bottom: 12px;
-  border-radius: 4px;
-  font-size: 14px;
-  color:#003366;
- background: #8be0d2ff;
+
+.form-group input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.15);
 }
+
+.form-group small {
+  display: block;
+  margin-top: 5px;
+  color: #e53935;
+  font-size: 12px;
+}
+
 .radio-inline {
   display: flex;
-  flex-direction:column;
-  /* align-items: center; */
+  align-items: center;
   gap: 6px;
-  padding: 6px 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background: #f9f9f9;
-  cursor: pointer;
+  margin: 0;
+}
+
+.radio-inline div {
   font-size: 14px;
 }
 
-.radio-inline input[type="radio"] {
-  margin: 0;
-  accent-color: #003366;
-}
 .password-rules {
-  font-size: 13px;
-  margin-top: 6px;
+  background: #f9fafb;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin-bottom: 16px;
 }
 
 .password-rules p {
   margin: 4px 0;
-  color: #b00020;
+  font-size: 13px;
+  color: #e53935;
 }
 
 .password-rules p.valid {
-  color: green;
+  color: #2e7d32;
+  font-weight: 600;
+}
+
+.radio-inline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.radio-inline input[type="radio"] {
+  accent-color: #007bff;
+}
+
+.success {
+  background: #e6f4ea;
+  color: #2e7d32;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.error {
+  background: #fdecea;
+  color: #c62828;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  background: #007bff;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.1s;
+}
+
+button[type="submit"]:hover:not(:disabled) {
+  background: #0056b3;
+}
+
+button[type="submit"]:disabled {
+  background: #9bbcf5;
+  cursor: not-allowed;
+}
+
+.register-card p {
+  text-align: center;
+  margin-top: 18px;
+  font-size: 14px;
+  color: #555;
+}
+
+.register-card a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.register-card a:hover {
+  text-decoration: underline;
 }

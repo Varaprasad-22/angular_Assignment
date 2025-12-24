@@ -46,15 +46,27 @@
     <div class="row">
       <div class="form-group">
         <label>Total Seats</label>
-        <input type="number" formControlName="totalSeats" />
+        <input type="number" formControlName="totalSeats"  min="1"
+  max="100"
+  step="1" />
       </div>
 
       <div class="form-group">
         <label>Price</label>
-        <input type="number" formControlName="price" />
+        <input type="number" formControlName="price"   min="0" />
       </div>
     </div>
-
+<small *ngIf="addFlightForm.get('totalSeats')?.touched && addFlightForm.get('totalSeats')?.errors">
+  <span *ngIf="addFlightForm.get('totalSeats')?.errors?.['required']">
+    Total seats is required
+  </span>
+  <span *ngIf="addFlightForm.get('totalSeats')?.errors?.['min']">
+    Total seats must be at least 1
+  </span>
+  <span *ngIf="addFlightForm.get('totalSeats')?.errors?.['max']">
+    Total seats cannot exceed 100
+  </span>
+</small>
     <button type="submit" [disabled]="addFlightForm.invalid">
       Add Flight
     </button>

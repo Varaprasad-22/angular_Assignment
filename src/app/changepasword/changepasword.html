@@ -42,7 +42,15 @@
         Passwords do not match
       </small>
     </div>
+<small *ngIf="changePasswordForm.errors?.['passwordMismatch'] 
+              && changePasswordForm.touched">
+  New password and confirm password do not match
+</small>
 
+<small *ngIf="changePasswordForm.errors?.['sameAsOldPassword'] 
+              && changePasswordForm.touched">
+  New password must be different from old password
+</small>
     <button type="submit" [disabled]="changePasswordForm.invalid">
       Change Password
     </button>

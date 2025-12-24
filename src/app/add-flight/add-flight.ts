@@ -34,9 +34,22 @@ export class AddFlight {
     toPlace:['',Validators.required],
     depatureTime:['',Validators.required],
     arrivalTime:['',Validators.required],
-    totalSeats:[null,[Validators.min(1),Validators.required]],
+    totalSeats:[null,[Validators.min(1),Validators.required,Validators.max(100)]],
     price:[null,[Validators.required,Validators.min(0)]]
-  })
+  },
+  { validators: this.arrivalAfterDepartureValidator })
+}
+arrivalAfterDepartureValidator(form: FormGroup) {
+  const departure = form.get('depatureTime')?.value;
+  const arrival = form.get('arrivalTime')?.value;
+
+  if (!departure || !arrival) {
+    return null;
+  }
+
+  return new Date(arrival) >= new Date(departure)
+    ? null
+    : { arrivalBeforeDeparture: true };
 }
 
   addFlight(){

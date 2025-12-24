@@ -1,35 +1,23 @@
 .bookings {
-  max-width: 800px;
+  max-width: 900px;
   margin: 40px auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  background: #fff;
+  padding: 30px 35px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.25);
 }
 
 .bookings h2 {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
+  color: #003366;
+  letter-spacing: 0.5px;
 }
 
 .booking {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-}
-
-.booking label {
-  display: block;
-  font-weight: 500;
-  margin-bottom: 5px;
-}
-
-.booking input,
-.booking select {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #bbb;
-  border-radius: 4px;
+  gap: 18px;
 }
 
 .name-section,
@@ -39,68 +27,109 @@
   flex-direction: column;
 }
 
-/* Passengers section */
+label {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+input,
+select {
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  outline: none;
+}
+
+input:focus,
+select:focus {
+  border-color: #003366;
+  box-shadow: 0 0 0 2px rgba(0, 51, 102, 0.2);
+}
+
+.email p {
+  padding: 10px 12px;
+  background: #f3f6fa;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #333;
+}
+
 [formArrayName="passengers"] {
-  border: 1px solid #ddd;
-  padding: 15px;
-  border-radius: 4px;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #ddd;
 }
 
 [formGroupName] {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 10px;
-  margin-bottom: 10px;
-  align-items: center;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px 18px;
+  margin-bottom: 20px;
+  padding: 18px;
+  background: #f9fafc;
+  border-radius: 8px;
 }
 
-[formGroupName] button {
-  padding: 6px;
-  border: 1px solid gray;
-  background: #fff;
-  color: gray;
-  border-radius: 4px;
+[formGroupName] div {
+  grid-column: span 2;
+}
+
+[formGroupName] label {
+  margin-right: 12px;
+  font-weight: 500;
+}
+
+button[type="submit"] {
+  margin-top: 25px;
+  padding: 12px;
+  background-color: #003366;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
   cursor: pointer;
+  transition: background 0.3s;
 }
 
-[formGroupName] button:hover {
-  background: #c00;
-  color: #fff;
+button[type="submit"]:hover:not(:disabled) {
+  background-color: #002244;
 }
 
-button {
-  padding: 10px;
-  border: 1px solid #003366;
-  background: #003366;
-  color: #fff;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-button[type="button"] {
-  background: #f5f5f5;
-  color: #000;
-  border: 1px solid #aaa;
-}
-
-button:disabled {
-  background: #999;
-  border-color: #999;
+button[type="submit"]:disabled {
+  background-color: #9bb0c7;
   cursor: not-allowed;
 }
-.success{
- padding: 8px 12px;
-  margin-bottom: 12px;
-  border-radius: 4px;
+
+.success {
+  margin-top: 18px;
+  padding: 10px;
+  border-radius: 6px;
+  background: #e6f4ea;
+  color: #2e7d32;
   font-size: 14px;
-  color:#003366;
- background: #8be0d2ff;
+  text-align: center;
 }
-.error{
-    background: #ffe5e5;
-  color: #b00020;
-  padding: 8px 12px;
-  margin-bottom: 12px;
-  border-radius: 4px;
+
+.error {
+  margin-top: 18px;
+  padding: 10px;
+  border-radius: 6px;
+  background: #fdecea;
+  color: #c62828;
   font-size: 14px;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  [formGroupName] {
+    grid-template-columns: 1fr;
+  }
+
+  [formGroupName] div {
+    grid-column: span 1;
+  }
 }

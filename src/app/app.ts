@@ -27,7 +27,7 @@ export class AppComponent {
 
  
   isAdmin(): boolean {
-    return this.role === 'admin';
+    return this.role === 'ADMIN';
   }
   showProfileMenu = false;
 

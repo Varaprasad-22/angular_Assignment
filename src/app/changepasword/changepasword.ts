@@ -36,9 +36,19 @@ export class Changepasword {
   }
 
   passwordMatchValidator(form: FormGroup) {
-    return form.get('newPassword')?.value ===
-           form.get('confirmPassword')?.value
-      ? null : { passwordMismatch: true };
+   const oldPassword = form.get('oldPassword')?.value;
+  const newPassword = form.get('newPassword')?.value;
+  const confirmPassword = form.get('confirmPassword')?.value;
+
+  if (newPassword !== confirmPassword) {
+    return { passwordMismatch: true };
+  }
+
+  if (oldPassword && newPassword && oldPassword === newPassword) {
+    return { sameAsOldPassword: true };
+  }
+
+  return null;
   }
 
   submit() {
