@@ -72,4 +72,10 @@ register(data: any) {
     // }
   );
 }
+
+expiredPasswordChange(data:any){
+  return this.http.post(
+    `${this.baseUrl}/change-password`,data
+  );
+}
 }

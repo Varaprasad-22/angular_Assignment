@@ -8,6 +8,7 @@ import { History } from './history/history';
 import { AddFlight } from './add-flight/add-flight';
 import { Changepasword } from './changepasword/changepasword';
 import { GetAllFlights } from './get-all-flights/get-all-flights';
+import { ExpiredPassword } from './expired-password/expired-password';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -18,6 +19,7 @@ export const routes: Routes = [
   {path:'bookingHistory',component:History},
   {path:"addFlight",component:AddFlight},
   {path:"changePassword",component:Changepasword},
-  {path:"getAllFlights",component:GetAllFlights}
+  {path:"getAllFlights",component:GetAllFlights},
+  {path:"expiredPassword",component:ExpiredPassword}
 ];
 
