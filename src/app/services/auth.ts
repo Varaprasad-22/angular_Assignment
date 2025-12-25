@@ -82,4 +82,12 @@ expiredPasswordChange(data:any){
 forgotPassword(data:any){
   return this.http.post<any>(`${this.baseUrl}/forgot-password`,data);
 }
+
+
+
+resetPassword(data:{ token: string; newPassword: string }){
+  return this.http.post<any>(
+    `${this.baseUrl}/reset-password`,data
+  )
+}
 }

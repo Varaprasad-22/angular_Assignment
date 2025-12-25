@@ -24,6 +24,6 @@ export const routes: Routes = [
   {path:"getAllFlights",component:GetAllFlights},
   {path:"expiredPassword",component:ExpiredPassword},
   {path:"forgotPassword",component:ForgotPassword},
-  {path:"ResetPAssword",component:ResetPassword}
+  {path:"reset-password",component:ResetPassword}
 ];
 

@@ -26,7 +26,7 @@
         <td>{{ flight.arrivalTime | date:'short' }}</td>
         <td>{{ flight.totalSeats }}</td>
         <td>₹{{ flight.price }}</td>
-        <td><button class="book-btn" (click)="bookingPass(flight)">Book Now</button></td>
+        <td><button class="book-btn"  [disabled]="flight.totalSeats<=0" (click)="bookingPass(flight)">Book Now</button></td>
             </tr>
         </tbody>
     </table>
