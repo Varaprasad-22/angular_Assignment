@@ -12,5 +12,9 @@ export class BookingService {
     return this.http.post(`${this.baseUrl}/booking`,data, { responseType: 'text' }  );
     
   }
+
+  getSeatsBooked(flightId:number){
+   return  this.http.get(`${this.baseUrl}/booking/${flightId}/bookingSeats`)
+  }
 }
  
