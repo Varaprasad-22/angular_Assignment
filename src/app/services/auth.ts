@@ -78,4 +78,8 @@ expiredPasswordChange(data:any){
     `${this.baseUrl}/changeOnExpire`,data
   );
 }
+
+forgotPassword(data:any){
+  return this.http.post<any>(`${this.baseUrl}/forgot-password`,data);
+}
 }

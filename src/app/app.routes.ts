@@ -9,6 +9,8 @@ import { AddFlight } from './add-flight/add-flight';
 import { Changepasword } from './changepasword/changepasword';
 import { GetAllFlights } from './get-all-flights/get-all-flights';
 import { ExpiredPassword } from './expired-password/expired-password';
+import { ForgotPassword } from './forgot-password/forgot-password';
+import { ResetPassword } from './reset-password/reset-password';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -20,6 +22,8 @@ export const routes: Routes = [
   {path:"addFlight",component:AddFlight},
   {path:"changePassword",component:Changepasword},
   {path:"getAllFlights",component:GetAllFlights},
-  {path:"expiredPassword",component:ExpiredPassword}
+  {path:"expiredPassword",component:ExpiredPassword},
+  {path:"forgotPassword",component:ForgotPassword},
+  {path:"ResetPAssword",component:ResetPassword}
 ];
 
