@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
@@ -23,7 +23,8 @@ export class Changepasword {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private cdr:ChangeDetectorRef
   ) {
     this.changePasswordForm = this.fb.group({
       oldPassword: ['', Validators.required],
@@ -68,9 +69,11 @@ export class Changepasword {
       next: (response: any) => {
         this.successMessage = response.message || 'Password changed successfully';
         this.changePasswordForm.reset();
+                this.cdr.detectChanges();
       },
       error: (err:any) => {
         this.errorMessage = err.error?.message || 'Failed to change password';
+                this.cdr.detectChanges();
       }
     });
   }

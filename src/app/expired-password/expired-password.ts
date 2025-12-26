@@ -21,7 +21,8 @@ export class ExpiredPassword {
   constructor(
     private authService:AuthService,
     private fb:FormBuilder,
-    private route:Router
+    private route:Router,
+    private cdr:ChangeDetectorRef
   ){
     this.expiredForm=this.fb.group({
     name: ['',Validators.required],
@@ -51,10 +52,11 @@ export class ExpiredPassword {
       next:(response:any)=>{
         this.successMessage=response.message||"Password Updated SuccesFully Please Login";
         setTimeout(() => this.route.navigate(['/login']), 1500);
+            this.cdr.detectChanges();
       },
       error:(err)=>{
         this.errorMessage=err.error;
-
+        this.cdr.detectChanges();
       }
     });
   }

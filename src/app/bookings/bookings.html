@@ -4,6 +4,11 @@
     <div class="name-section">
       <label>Name</label>
       <input formControlName="name" placeholder="Enter Bookers Name" />
+      <small *ngIf="bookingForm.get('name')?.touched && bookingForm.get('name')?.errors" style=" margin-top: 10px;">
+        <span *ngIf="bookingForm.get('name')?.errors?.['required']" style=" font-size: 12px;
+  color: #d32f2f;">
+          Name is required
+        </span></small>
     </div>
     <div class="email">
       <label>Email</label>
@@ -18,56 +23,71 @@
 
       <div *ngFor="let p of passengers.controls; let i = index" [formGroupName]="i" class="passengers_card">
         <p>Add details of Passenger - {{i+1}}</p><br>
-        <input formControlName="name" placeholder="Passenger Name" />
-        <input type="number" formControlName="age" placeholder="Age" min="1" />
-
-        <div>
-          <label>Gender</label>
-          <label>
-            <input type="radio" formControlName="gender" value="Male">
-            Male
-          </label>
-
-          <label>
-            <input type="radio" formControlName="gender" value="Female">
-            Female
-          </label>
+        <div style="display: flex; gap: 17px;">
+          <div style="display: flex; flex-direction: column; width: 50%;">
+            <input formControlName="name" placeholder="Passenger Name" />
+            <small *ngIf="p.get('name')?.touched && p.get('name')?.errors" style=" margin-top: 10px;">
+              <span *ngIf="p.get('name')?.errors?.['required']" style=" font-size: 12px;
+  color: #d32f2f;">
+                Name is required
+              </span></small>
+          </div>
+          <div style="display: flex; flex-direction: column; width: 50%;">
+          <input type="number" formControlName="age" placeholder="Age" min="1" />
+           <small *ngIf="p.get('age')?.touched && p.get('age')?.errors" style=" margin-top: 10px;">
+              <span *ngIf="p.get('age')?.errors?.['required']" style=" font-size: 12px;
+  color: #d32f2f;">
+               Age is required
+              </span></small>
         </div>
-        <input readonly placeholder="Select seat" [value]="p.get('seatNo')?.value" (click)="openSeatSelector(i)" />
+      </div>
+      <div>
+        <label>Gender</label>
+        <label>
+          <input type="radio" formControlName="gender" value="Male">
+          Male
+        </label>
 
-        <select formControlName="meal">
-          <option value="">Meal</option>
-          <option value="veg">Veg</option>
-          <option value="nonVeg">Non-Veg</option>
-        </select>
-        <!-- 
+        <label>
+          <input type="radio" formControlName="gender" value="Female">
+          Female
+        </label>
+      </div>
+      <input readonly placeholder="Select seat" [value]="p.get('seatNo')?.value" (click)="openSeatSelector(i)" />
+
+      <select formControlName="meal">
+        <option value="">Meal</option>
+        <option value="veg">Veg</option>
+        <option value="nonVeg">Non-Veg</option>
+      </select>
+      <!-- 
       <button type="button" (click)="removePassenger(i)">Remove</button> -->
 
-      </div>
-
     </div>
-    <div class="seat-overlay" *ngIf="activeSeatIndex!== null">
-      <div class="seat-modal">
-        <h3>Select Seat</h3>
 
-        <div class="seat-grid">
-          <div class="seat-row" *ngFor="let row of seatRows">
-            <button type="button" *ngFor="let col of seatCols" class="seat" [class.booked]="isSeatBooked(row + col)"
-              [class.selected]="isSelected(row + col)" [disabled]="isSeatBooked(row + col)"
-              (click)="selectSeat(row + col)" [class.disabled]="isSeatBooked(row + col) || isSelected(row + col)">
-              {{ row }}{{ col }}
-            </button>
-          </div>
-        </div>
+</div>
+<div class="seat-overlay" *ngIf="activeSeatIndex!== null">
+  <div class="seat-modal">
+    <h3>Select Seat</h3>
 
-        <button class="close-btn" (click)="closeSeat()">Close</button>
+    <div class="seat-grid">
+      <div class="seat-row" *ngFor="let row of seatRows">
+        <button type="button" *ngFor="let col of seatCols" class="seat" [class.booked]="isSeatBooked(row + col)"
+          [class.selected]="isSelected(row + col)" [disabled]="isSeatBooked(row + col)" (click)="selectSeat(row + col)"
+          [class.disabled]="isSeatBooked(row + col) || isSelected(row + col)">
+          {{ row }}{{ col }}
+        </button>
       </div>
     </div>
 
+    <button class="close-btn" (click)="closeSeat()">Close</button>
+  </div>
+</div>
 
-    <!-- <button type="button" (click)="addPassenger()">Add Passenger</button> -->
-    <button type="submit" [disabled]="bookingForm.invalid">Book Now</button>
-  </form>
-  <p *ngIf="successMessage" class="success">{{successMessage}}</p>
-  <p *ngIf="errorMessage" class="error">{{errorMessage}}</p>
+
+<!-- <button type="button" (click)="addPassenger()">Add Passenger</button> -->
+<button type="submit" [disabled]="bookingForm.invalid">Book Now</button>
+</form>
+<p *ngIf="successMessage" class="success">{{successMessage}}</p>
+<p *ngIf="errorMessage" class="error">{{errorMessage}}</p>
 </div>

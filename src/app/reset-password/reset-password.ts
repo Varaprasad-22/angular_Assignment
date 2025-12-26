@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component,ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../services/auth';
@@ -23,7 +23,8 @@ export class ResetPassword {
     private router:Router,
     private authService:AuthService,
     private route:ActivatedRoute,
-    private fb:FormBuilder
+    private fb:FormBuilder,
+    private cdr:ChangeDetectorRef
   ){
     this.token=this.route.snapshot.queryParamMap.get('token')||'';
     this.form=this.fb.group({
@@ -37,9 +38,11 @@ export class ResetPassword {
      next: () => {
         this.message = 'Password updated successfully!';
         setTimeout(() => this.router.navigate(['/login']), 2000);
+        this.cdr.detectChanges();
       },
       error: err => {
         this.error = err.error?.message || 'Invalid or expired link';
+                this.cdr.detectChanges();
       }
     })
   }
