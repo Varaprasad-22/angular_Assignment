@@ -68,7 +68,7 @@ this.history.cancelTicet(this.selectedPnr).subscribe({
   error:(err)=>{
     // this.cancelerror= err?.error?.message || 'Cancel failed';
     const booking = this.bookings.find(b => b.pnr === this.selectedPnr);
-    booking.cancelError = err?.error?.message || 'Cancel failed';
+    booking.cancelError = err?.error || 'Cancel failed';
 
     console.log(err)
         this.showDialog=false;

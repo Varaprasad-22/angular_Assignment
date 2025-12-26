@@ -55,6 +55,10 @@ tbody tr:hover {
    cursor: pointer;
 }
 
+.book-btn:disabled{
+  background-color: #999;
+}
+
 @media (max-width: 900px) {
   table {
     font-size: 13px;

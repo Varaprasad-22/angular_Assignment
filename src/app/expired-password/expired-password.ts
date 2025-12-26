@@ -14,6 +14,8 @@ export class ExpiredPassword {
 
   errorMessage='';
   successMessage='';
+  passwordRegex =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
   expiredForm!:FormGroup
   constructor(
@@ -24,7 +26,7 @@ export class ExpiredPassword {
     this.expiredForm=this.fb.group({
     name: ['',Validators.required],
     oldPassword:['',Validators.required],
-    newPassword:['',Validators.required],
+    newPassword:['',[Validators.required,Validators.pattern(this.passwordRegex)]],
     confirmPassword:['',Validators.required]
   });
   }

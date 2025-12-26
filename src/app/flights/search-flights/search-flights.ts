@@ -94,4 +94,8 @@ selectFlight(flight: any) {
   });
 }
 
+  isBookingDisabled(flight:any){
+    return flight.totalSeats<=0||
+    new Date(flight.depatureTime)<=new Date();
+  }
 }

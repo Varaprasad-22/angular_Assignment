@@ -120,6 +120,9 @@ tr:nth-child(even) {
   background-color: #1b5e20;
 }
 
+.book-btn:disabled{
+  background-color: #999;
+}
 .error {
   margin-top: 20px;
   padding: 10px;

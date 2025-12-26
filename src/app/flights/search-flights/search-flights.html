@@ -76,8 +76,9 @@
     <td>{{ flight.depatureTime | date:'short' }}</td>
     <td>{{ flight.arrivalTime | date:'short' }}</td>
     <td>₹{{ flight.price }}</td>
+    <td>{{flight.totalSeats}}</td>
     <td>
-     <button type="button" class="book-btn" (click)="selectFlight(flight)">
+     <button type="button" [disabled]="isBookingDisabled(flight)" class="book-btn" (click)="selectFlight(flight)">
       Book Now
     </button>
     </td>
