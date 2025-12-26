@@ -16,7 +16,9 @@ export class ResetPassword {
   form!:FormGroup;
   message="";
   error="";
-  
+   passwordRegex =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
   constructor(
     private router:Router,
     private authService:AuthService,
@@ -25,7 +27,7 @@ export class ResetPassword {
   ){
     this.token=this.route.snapshot.queryParamMap.get('token')||'';
     this.form=this.fb.group({
-      newPassword:['',[Validators.required,Validators.minLength(8)]]
+      newPassword:['',[Validators.required,Validators.pattern(this.passwordRegex)]]
     })
   }
 

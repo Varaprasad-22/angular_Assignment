@@ -44,6 +44,9 @@ export class ExpiredPassword {
       return;
 
     }
+    if(this.expiredForm.value.oldPassword===this.expiredForm.value.newPassword){
+      this.errorMessage="Old Password & new Password Must be different"
+    }
     this.authService.expiredPasswordChange(this.expiredForm.value).subscribe({
       next:(response:any)=>{
         this.successMessage=response.message||"Password Updated SuccesFully Please Login";
